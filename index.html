@@ -123,7 +123,7 @@
         });
     }
 
-    // Filter data based on checkboxes
+    // Filter data based on checkboxes (using OR logic for ML levels)
     function filterData() {
         const ml1Checked = document.getElementById('ml1').checked;
         const ml2Checked = document.getElementById('ml2').checked;
@@ -135,10 +135,14 @@
 
         filteredData = data.filter(item => {
             const matchesStrategy = selectedStrategies.length === 0 || selectedStrategies.includes(item.MitigationStrategy);
-            return matchesStrategy &&
-                   (!ml1Checked || item.ML1 === "TRUE") &&
-                   (!ml2Checked || item.ML2 === "TRUE") &&
-                   (!ml3Checked || item.ML3 === "TRUE");
+            
+            // OR logic: Show rows if ANY ML checkbox is selected and matches TRUE
+            const matchesML = (!ml1Checked && !ml2Checked && !ml3Checked) || 
+                              (ml1Checked && item.ML1 === "TRUE") || 
+                              (ml2Checked && item.ML2 === "TRUE") || 
+                              (ml3Checked && item.ML3 === "TRUE");
+
+            return matchesStrategy && matchesML;
         });
 
         displayData(filteredData);  // Update the table after filtering
