@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACSC Essential 8 - Nov 2023 Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .filters-row {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .filters label {
+            margin-right: 15px;
+            font-size: 16px;
+        }
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        th.sortable:hover {
+            background-color: #0056b3;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>ACSC Essential 8 - Nov 2023 Update</h1>
+
+<div class="filters">
+    <!-- Mitigation Strategy Checkboxes -->
+    <div class="filters-row" id="strategyCheckboxes">
+        <!-- Strategy checkboxes will be dynamically added here -->
+    </div>
+
+    <!-- ML Level Checkboxes -->
+    <div class="filters-row">
+        <label><input type="checkbox" id="ml1" /> ML1</label>
+        <label><input type="checkbox" id="ml2" /> ML2</label>
+        <label><input type="checkbox" id="ml3" /> ML3</label>
+    </div>
+</div>
+
+<table id="resultsTable">
+    <thead>
+        <tr>
+            <th class="sortable" onclick="sortTable('MitigationStrategy')">Mitigation Strategy</th>
+            <th class="sortable" onclick="sortTable('ControlReference')">Control Reference</th>
+            <th>Control</th>
+            <th>ML1</th>
+            <th>ML2</th>
+            <th>ML3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Filtered data will be inserted here -->
+    </tbody>
+</table>
+
+<script>
+    let data = [];
+    let filteredData = [];
+    let currentSortField = '';
+    let currentSortOrder = 'asc'; // Start with ascending order
+
+    // Fetch the data from the external JSON file
+    fetch('data.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            data = jsonData;
+            populateMitigationStrategies();  // Populate checkboxes
+            filterData();  // Display initial data on load
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+
+    // Populate the Mitigation Strategy checkboxes
+    function populateMitigationStrategies() {
+        const uniqueStrategies = [...new Set(data.map(item => item.MitigationStrategy))];
+        const strategyContainer = document.getElementById('strategyCheckboxes');
+        uniqueStrategies.forEach(strategy => {
+            const label = document.createElement('label');
+            label.innerHTML = `<input type="checkbox" value="${strategy}" /> ${strategy}`;
+            strategyContainer.appendChild(label);
+        });
+
+        // Add event listeners to all checkboxes for dynamic filtering
+        document.querySelectorAll('.filters-row input').forEach(checkbox => {
+            checkbox.addEventListener('input', filterData);
+        });
+    }
+
+    // Filter data based on checkboxes
+    function filterData() {
+        const ml1Checked = document.getElementById('ml1').checked;
+        const ml2Checked = document.getElementById('ml2').checked;
+        const ml3Checked = document.getElementById('ml3').checked;
+
+        // Get selected mitigation strategies
+        const selectedStrategies = Array.from(document.querySelectorAll('#strategyCheckboxes input:checked'))
+                                        .map(checkbox => checkbox.value);
+
+        filteredData = data.filter(item => {
+            const matchesStrategy = selectedStrategies.length === 0 || selectedStrategies.includes(item.MitigationStrategy);
+            return matchesStrategy &&
+                   (!ml1Checked || item.ML1 === "TRUE") &&
+                   (!ml2Checked || item.ML2 === "TRUE") &&
+                   (!ml3Checked || item.ML3 === "TRUE");
+        });
+
+        displayData(filteredData);  // Update the table after filtering
+    }
+
+    // Display filtered data
+    function displayData(filteredData) {
+        const tbody = document.querySelector('#resultsTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+
+        filteredData.forEach(item => {
+            const mitigationStrategy = item.MitigationStrategy || 'N/A';
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${mitigationStrategy}</td>
+                <td>${item.ControlReference || 'N/A'}</td>
+                <td>${item.Control || 'N/A'}</td>
+                <td>${item.ML1 || ''}</td>
+                <td>${item.ML2 || ''}</td>
+                <td>${item.ML3 || ''}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Sort table by a given field (MitigationStrategy or ControlReference)
+    function sortTable(field) {
+        // Toggle sorting order if the same field is clicked again
+        if (currentSortField === field) {
+            currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSortField = field;
+            currentSortOrder = 'asc'; // Start with ascending order for new field
+        }
+
+        // Sort the filtered data (not the original dataset)
+        filteredData.sort((a, b) => {
+            const aValue = a[field] || '';
+            const bValue = b[field] || '';
+            
+            if (aValue < bValue) return currentSortOrder === 'asc' ? -1 : 1;
+            if (aValue > bValue) return currentSortOrder === 'asc' ? 1 : -1;
+            return 0;
+        });
+
+        displayData(filteredData); // Re-render table after sorting
+    }
+</script>
+
+</body>
+</html>

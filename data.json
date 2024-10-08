@@ -1,0 +1,1218 @@
+[
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML1-AC-01",
+    "Control": "Application control is implemented on workstations.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML1-AC-02",
+    "Control": "Application control is applied to user profiles and temporary folders used by operating systems, web browsers and email clients.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML1-AC-03",
+    "Control": "Application control restricts the execution of executables, software libraries, scripts, installers, compiled HTML, HTML applications and control panel applets to an organisation-approved set.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML1-AH-01",
+    "Control": "Internet Explorer 11 is disabled or removed.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML1-AH-02",
+    "Control": "Web browsers do not process Java from the internet.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML1-AH-03",
+    "Control": "Web browsers do not process web advertisements from the internet.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML1-AH-04",
+    "Control": "Web browser security settings cannot be changed by users.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-01",
+    "Control": "Multi-factor authentication is used to authenticate users to their organisation’s online services that process, store or communicate their organisation’s sensitive data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-02",
+    "Control": "Multi-factor authentication is used to authenticate users to third-party online services that process, store or communicate their organisation’s sensitive data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-03",
+    "Control": "Multi-factor authentication (where available) is used to authenticate users to third-party online services that process, store or communicate their organisation’s non-sensitive data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-04",
+    "Control": "Multi-factor authentication is used to authenticate users to their organisation’s online customer services that process, store or communicate their organisation’s sensitive customer data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-05",
+    "Control": "Multi-factor authentication is used to authenticate users to third-party online customer services that process, store or communicate their organisation’s sensitive customer data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-06",
+    "Control": "Multi-factor authentication is used to authenticate customers to online customer services that process, store or communicate sensitive customer data.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML1-MF-07",
+    "Control": "Multi-factor authentication uses either: something users have and something users know, or something users have that is unlocked by something users know or are.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-01",
+    "Control": "An automated method of asset discovery is used at least fortnightly to support the detection of assets for subsequent vulnerability scanning activities.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-02",
+    "Control": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-03",
+    "Control": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in online services.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-04",
+    "Control": "A vulnerability scanner is used at least weekly to identify missing patches or updates for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-05",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in online services are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-06",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in online services are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-07",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within two weeks of release.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "FALSE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-08",
+    "Control": "Online services that are no longer supported by vendors are removed.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML1-PA-09",
+    "Control": "Office productivity suites, web browsers and their extensions, email clients, PDF software, Adobe Flash Player, and security products that are no longer supported by vendors are removed.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-01",
+    "Control": "An automated method of asset discovery is used at least fortnightly to support the detection of assets for subsequent vulnerability scanning activities.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-02",
+    "Control": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-03",
+    "Control": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-04",
+    "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-05",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-06",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-07",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within one month of release.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "FALSE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML1-PO-08",
+    "Control": "Operating systems that are no longer supported by vendors are replaced.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-01",
+    "Control": "Requests for privileged access to systems, applications and data repositories are validated when first requested.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-02",
+    "Control": "Privileged users are assigned a dedicated privileged account to be used solely for duties requiring privileged access.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-03",
+    "Control": "Privileged accounts (excluding those explicitly authorised to access online services) are prevented from accessing the internet, email and web services.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-04",
+    "Control": "Privileged accounts explicitly authorised to access online services are strictly limited to only what is required for users and services to undertake their duties.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-05",
+    "Control": "Privileged users use separate privileged and unprivileged operating environments.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-06",
+    "Control": "Unprivileged accounts cannot logon to privileged operating environments.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML1-RA-07",
+    "Control": "Privileged accounts (excluding local administrator accounts) cannot logon to unprivileged operating environments.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-01",
+    "Control": "Backups of data, applications and settings are performed and retained in accordance with business criticality and business continuity requirements.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-02",
+    "Control": "Backups of data, applications and settings are synchronised to enable restoration to a common point in time.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-03",
+    "Control": "Backups of data, applications and settings are retained in a secure and resilient manner.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-04",
+    "Control": "Restoration of data, applications and settings from backups to a common point in time is tested as part of disaster recovery exercises.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-05",
+    "Control": "Unprivileged accounts cannot access backups belonging to other accounts.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML1-RB-06",
+    "Control": "Unprivileged accounts are prevented from modifying and deleting backups.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML1-RM-01",
+    "Control": "Microsoft Office macros are disabled for users that do not have a demonstrated business requirement.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML1-RM-02",
+    "Control": "Microsoft Office macros in files originating from the internet are blocked.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML1-RM-03",
+    "Control": "Microsoft Office macro antivirus scanning is enabled.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML1-RM-04",
+    "Control": "Microsoft Office macro security settings cannot be changed by users.",
+    "ML1": "TRUE",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-01",
+    "Control": "Application control is implemented on internet-facing servers.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-02",
+    "Control": "Application control is applied to all locations other than user profiles and temporary folders used by operating systems, web browsers and email clients.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-03",
+    "Control": "Microsoft’s recommended application blocklist is implemented.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-04",
+    "Control": "Application control rulesets are validated on an annual or more frequent basis.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-05",
+    "Control": "Allowed and blocked application control events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-06",
+    "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-07",
+    "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-08",
+    "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-09",
+    "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-10",
+    "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML2-AC-11",
+    "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-01",
+    "Control": "Web browsers are hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-02",
+    "Control": "Microsoft Office is blocked from creating child processes.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-03",
+    "Control": "Microsoft Office is blocked from creating executable content.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-04",
+    "Control": "Microsoft Office is blocked from injecting code into other processes.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-05",
+    "Control": "Microsoft Office is configured to prevent activation of Object Linking and Embedding packages.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-06",
+    "Control": "Office productivity suites are hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-07",
+    "Control": "Office productivity suite security settings cannot be changed by users.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-08",
+    "Control": "PDF software is blocked from creating child processes.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-09",
+    "Control": "PDF software is hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-10",
+    "Control": "PDF software security settings cannot be changed by users.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-11",
+    "Control": "PowerShell module logging, script block logging and transcription events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-12",
+    "Control": "Command line process creation events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-13",
+    "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-14",
+    "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-15",
+    "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-16",
+    "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-17",
+    "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML2-AH-18",
+    "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-01",
+    "Control": "Multi-factor authentication is used to authenticate privileged users of systems.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-02",
+    "Control": "Multi-factor authentication is used to authenticate unprivileged users of systems.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-03",
+    "Control": "Multi-factor authentication used for authenticating users of online services is phishing-resistant.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-04",
+    "Control": "Multi-factor authentication used for authenticating customers of online customer services provides a phishing-resistant option.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "FALSE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-05",
+    "Control": "Multi-factor authentication used for authenticating users of systems is phishing-resistant.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-06",
+    "Control": "Successful and unsuccessful multi-factor authentication events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-07",
+    "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-08",
+    "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-09",
+    "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-10",
+    "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-11",
+    "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML2-MF-12",
+    "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML2-PA-01",
+    "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, and security products.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML2-PA-02",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within one month of release.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-01",
+    "Control": "Privileged access to systems, applications and data repositories is disabled after 12 months unless revalidated.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-02",
+    "Control": "Privileged access to systems and applications is disabled after 45 days of inactivity.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-03",
+    "Control": "Privileged operating environments are not virtualised within unprivileged operating environments.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-04",
+    "Control": "Administrative activities are conducted through jump servers.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-05",
+    "Control": "Credentials for break glass accounts, local administrator accounts and service accounts are long, unique, unpredictable and managed.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-06",
+    "Control": "Privileged access events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-07",
+    "Control": "Privileged account and group management events are centrally logged.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-08",
+    "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-09",
+    "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-10",
+    "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-11",
+    "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-12",
+    "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML2-RA-13",
+    "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML2-RB-01",
+    "Control": "Privileged accounts (excluding backup administrator accounts) cannot access backups belonging to other accounts.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML2-RB-02",
+    "Control": "Privileged accounts (excluding backup administrator accounts) are prevented from modifying and deleting backups.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML2-RM-01",
+    "Control": "Microsoft Office macros are blocked from making Win32 API calls.",
+    "ML1": "",
+    "ML2": "TRUE",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML3-AC-01",
+    "Control": "Application control is implemented on non-internet-facing servers.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML3-AC-02",
+    "Control": "Application control restricts the execution of drivers to an organisation-approved set.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML3-AC-03",
+    "Control": "Microsoft’s vulnerable driver blocklist is implemented.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML3-AC-04",
+    "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Control",
+    "ControlReference": "ML3-AC-05",
+    "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML3-AH-01",
+    "Control": ".NET Framework 3.5 (includes .NET 2.0 and 3.0) is disabled or removed.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML3-AH-02",
+    "Control": "Windows PowerShell 2.0 is disabled or removed.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML3-AH-03",
+    "Control": "PowerShell is configured to use Constrained Language Mode.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML3-AH-04",
+    "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Application Hardening",
+    "ControlReference": "ML3-AH-05",
+    "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML3-MF-01",
+    "Control": "Multi-factor authentication is used to authenticate users of data repositories.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML3-MF-02",
+    "Control": "Multi-factor authentication used for authenticating customers of online customer services is phishing-resistant.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML3-MF-03",
+    "Control": "Multi-factor authentication used for authenticating users of data repositories is phishing-resistant.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML3-MF-04",
+    "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Multi-factor authentication",
+    "ControlReference": "ML3-MF-05",
+    "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML3-PA-01",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML3-PA-02",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Applications",
+    "ControlReference": "ML3-PA-03",
+    "Control": "Applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, Adobe Flash Player, and security products that are no longer supported by vendors are removed.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-01",
+    "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in drivers.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-02",
+    "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in firmware.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-03",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-04",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-05",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in drivers are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-06",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in drivers are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-07",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in firmware are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-08",
+    "Control": "Patches, updates or other vendor mitigations for vulnerabilities in firmware are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Patch Operating Systems",
+    "ControlReference": "ML3-PO-09",
+    "Control": "The latest release, or the previous release, of operating systems are used.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-01",
+    "Control": "Privileged access to systems, applications and data repositories is limited to only what is required for users and services to undertake their duties.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-02",
+    "Control": "Secure Admin Workstations are used in the performance of administrative activities.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-03",
+    "Control": "Just-in-time administration is used for administering systems and applications.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-04",
+    "Control": "Memory integrity functionality is enabled.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-05",
+    "Control": "Local Security Authority protection functionality is enabled.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-06",
+    "Control": "Credential Guard functionality is enabled.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-07",
+    "Control": "Remote Credential Guard functionality is enabled.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-08",
+    "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict administrative privileges",
+    "ControlReference": "ML3-RA-09",
+    "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML3-RB-01",
+    "Control": "Unprivileged accounts cannot access their own backups.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML3-RB-02",
+    "Control": "Privileged accounts (excluding backup administrator accounts) cannot access their own backups.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Regular backups",
+    "ControlReference": "ML3-RB-03",
+    "Control": "Backup administrator accounts are prevented from modifying and deleting backups during their retention period.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-01",
+    "Control": "Only Microsoft Office macros running from within a sandboxed environment, a Trusted Location or that are digitally signed by a trusted publisher are allowed to execute.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-02",
+    "Control": "Microsoft Office macros are checked to ensure they are free of malicious code before being digitally signed or placed within Trusted Locations.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-03",
+    "Control": "Only privileged users responsible for checking that Microsoft Office macros are free of malicious code can write to and modify content within Trusted Locations.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-04",
+    "Control": "Microsoft Office macros digitally signed by an untrusted publisher cannot be enabled via the Message Bar or Backstage View.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-05",
+    "Control": "Microsoft Office macros digitally signed by signatures other than V3 signatures cannot be enabled via the Message Bar or Backstage View.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  },
+  {
+    "MitigationStrategy": "Restrict Microsoft Office macros",
+    "ControlReference": "ML3-RM-06",
+    "Control": "Microsoft Office’s list of trusted publishers is validated on an annual or more frequent basis.",
+    "ML1": "",
+    "ML2": "",
+    "ML3": "TRUE"
+  }
+]
