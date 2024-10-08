@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACSC Essential 8 - Nov 2023 Update</title>
+    <title>Mitigation Strategies Filter</title>
     <style>
+        /* Default light theme colors using CSS variables */
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --table-bg-color: white;
+            --table-border-color: #ddd;
+            --table-hover-bg-color: #f1f1f1;
+            --th-bg-color: #007bff;
+            --th-hover-bg-color: #0056b3;
+            --th-text-color: white;
+        }
+
+        /* Dark mode theme colors */
+        .dark-mode {
+            --bg-color: #1c1c1e;
+            --text-color: #eaeaea;
+            --table-bg-color: #2c2c2e;
+            --table-border-color: #444;
+            --table-hover-bg-color: #3a3a3c;
+            --th-bg-color: #3a3a3c;
+            --th-hover-bg-color: #5a5a5c;
+            --th-text-color: #eaeaea;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f9;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         h1 {
             text-align: center;
-            color: #333;
         }
         .filters {
             display: flex;
@@ -29,37 +53,54 @@
             margin-right: 15px;
             font-size: 16px;
         }
+        .dark-mode-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .dark-mode-toggle button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: var(--th-bg-color);
+            color: var(--th-text-color);
+            border: none;
+            border-radius: 4px;
+        }
         table {
             width: 90%;
             margin: 0 auto;
             border-collapse: collapse;
-            background-color: white;
+            background-color: var(--table-bg-color);
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
         th, td {
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--table-border-color);
             text-align: left;
         }
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: var(--th-bg-color);
+            color: var(--th-text-color);
             cursor: pointer;
         }
         th.sortable:hover {
-            background-color: #0056b3;
+            background-color: var(--th-hover-bg-color);
         }
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: var(--table-hover-bg-color);
         }
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: var(--table-hover-bg-color);
         }
     </style>
 </head>
 <body>
 
-<h1>ACSC Essential 8 - Nov 2023 Update</h1>
+<h1>Mitigation Strategies</h1>
+
+<div class="dark-mode-toggle">
+    <button id="toggleDarkMode">Toggle Dark Mode</button>
+</div>
 
 <div class="filters">
     <!-- Mitigation Strategy Checkboxes -->
@@ -190,6 +231,12 @@
 
         displayData(filteredData); // Re-render table after sorting
     }
+
+    // Toggle dark mode
+    const toggleButton = document.getElementById('toggleDarkMode');
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
 </script>
 
 </body>
