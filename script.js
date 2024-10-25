@@ -65,7 +65,7 @@ function displayData(filteredData) {
         row.innerHTML = `
             <td>${mitigationStrategy}</td>
             <td>${item.ControlReference || 'N/A'}</td>
-            <td>${item.Control || 'N/A'}</td>
+            <td class="control-column">${item.Control || 'N/A'}</td>  <!-- Added class here -->
             <td>${item.ML1 || ''}</td>
             <td>${item.ML2 || ''}</td>
             <td>${item.ML3 || ''}</td>
@@ -97,8 +97,22 @@ function sortTable(field) {
     displayData(filteredData); // Re-render table after sorting
 }
 
-// Toggle dark mode
+// Toggle between light mode and dark mode
 const toggleButton = document.getElementById('toggleDarkMode');
 toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+    if (document.body.classList.contains('light-mode')) {
+        toggleButton.textContent = 'Toggle Dark Mode';
+    } else {
+        toggleButton.textContent = 'Toggle Light Mode';
+    }
+});
+
+// Reset all checkboxes
+const resetButton = document.getElementById('resetFilters');
+resetButton.addEventListener('click', () => {
+    document.querySelectorAll('.filters-row input').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    filterData(); // Refresh the filtered data after reset
 });
