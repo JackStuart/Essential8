@@ -6,12 +6,12 @@
     <title>ACSC Essential 8 - Nov 2023 Update</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-mode"> <!-- Default to dark mode -->
 
 <h1>ACSC Essential 8 - Nov 2023 Update</h1>
 
 <div class="dark-mode-toggle">
-    <button id="toggleDarkMode">Toggle Dark Mode</button>
+    <button id="toggleDarkMode">Toggle Light Mode</button> <!-- Updated to toggle between modes -->
 </div>
 
 <div class="filters">
@@ -25,6 +25,11 @@
         <label><input type="checkbox" id="ml1" /> ML1</label>
         <label><input type="checkbox" id="ml2" /> ML2</label>
         <label><input type="checkbox" id="ml3" /> ML3</label>
+    </div>
+
+    <!-- Reset Button -->
+    <div class="filters-row">
+        <button id="resetFilters">Reset Filters</button>
     </div>
 </div>
 

@@ -1,17 +1,5 @@
-/* Default light theme colors using CSS variables */
+/* Default dark theme (dark mode as default) */
 :root {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --table-bg-color: white;
-    --table-border-color: #ddd;
-    --table-hover-bg-color: #f1f1f1;
-    --th-bg-color: #007bff;
-    --th-hover-bg-color: #0056b3;
-    --th-text-color: white;
-}
-
-/* Dark mode theme colors */
-.dark-mode {
     --bg-color: #1c1c1e;
     --text-color: #eaeaea;
     --table-bg-color: #2c2c2e;
@@ -20,6 +8,18 @@
     --th-bg-color: #3a3a3c;
     --th-hover-bg-color: #5a5a5c;
     --th-text-color: #eaeaea;
+}
+
+/* Light mode theme */
+.light-mode {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --table-bg-color: white;
+    --table-border-color: #ddd;
+    --table-hover-bg-color: #f1f1f1;
+    --th-bg-color: #007bff;
+    --th-hover-bg-color: #0056b3;
+    --th-text-color: white;
 }
 
 body {
@@ -66,6 +66,7 @@ h1 {
     border-radius: 4px;
 }
 
+/* Ensure the table cells adjust to fit content */
 table {
     width: 90%;
     margin: 0 auto;
@@ -78,6 +79,13 @@ th, td {
     padding: 12px;
     border: 1px solid var(--table-border-color);
     text-align: left;
+    white-space: nowrap; /* Prevent wrapping by default */
+}
+
+/* Allow wrapping only for the "Control" column */
+td.control-column {
+    white-space: normal; /* Enable wrapping for this column */
+    word-wrap: break-word; /* Ensure long words break properly */
 }
 
 th {
