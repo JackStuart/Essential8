@@ -105,3 +105,82 @@ tr:nth-child(even) {
 tr:hover {
     background-color: var(--table-hover-bg-color);
 }
+
+.control-column {
+    cursor: pointer;
+}
+
+.control-column:hover {
+    text-decoration: underline;
+}
+
+#methodologyPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: var(--table-bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h3 {
+    margin-top: 0;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: var(--th-bg-color);
+    color: var(--th-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: var(--th-hover-bg-color);
+}
+
+.methodology-row {
+    background-color: var(--table-bg-color) !important;
+}
+
+.methodology-row.hidden {
+    display: none;
+}
+
+.methodology-content {
+    padding: 15px 30px;
+    border-left: 4px solid var(--th-bg-color);
+    margin: 0 20px;
+}
+
+.methodology-content strong {
+    color: var(--th-text-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.methodology-content p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+tr.active {
+    background-color: var(--table-hover-bg-color) !important;
+}

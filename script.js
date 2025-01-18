@@ -5,6 +5,7 @@ let currentSortOrder = 'asc'; // Start with ascending order
 
 // Fetch the data from the external JSON file
 fetch('data.json')
+
     .then(response => response.json())
     .then(jsonData => {
         data = jsonData;
@@ -61,17 +62,65 @@ function displayData(filteredData) {
 
     filteredData.forEach(item => {
         const mitigationStrategy = item.MitigationStrategy || 'N/A';
+        // Create main row
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${mitigationStrategy}</td>
             <td>${item.ControlReference || 'N/A'}</td>
-            <td class="control-column">${item.Control || 'N/A'}</td>  <!-- Added class here -->
+            <td class="control-column">${item.Control || 'N/A'}</td>
             <td>${item.ML1 || ''}</td>
             <td>${item.ML2 || ''}</td>
             <td>${item.ML3 || ''}</td>
         `;
+        
+        // Create methodology row (hidden by default)
+        const methodologyRow = document.createElement('tr');
+        methodologyRow.className = 'methodology-row hidden';
+        methodologyRow.innerHTML = `
+            <td colspan="6">
+                <div class="methodology-content">
+                    <strong>Test Methodology:</strong>
+                    <p>${formatText(item.TestMethodology || 'No test methodology available.')}</p>
+                </div>
+            </td>
+        `;
+        
+        // Add click handler to the control cell
+        const controlCell = row.querySelector('.control-column');
+        controlCell.addEventListener('click', function() {
+            methodologyRow.classList.toggle('hidden');
+            row.classList.toggle('active');
+        });
+        
         tbody.appendChild(row);
+        tbody.appendChild(methodologyRow);
     });
+}
+
+// Option 1: Replace \n with <br> tags
+function formatText(text) {
+    return text.replace(/\n/g, '<br>');
+}
+
+// Add this new function to handle showing the methodology
+function showMethodology(methodology) {
+    // Remove any existing methodology popup
+    const existingPopup = document.getElementById('methodologyPopup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Create and show the popup
+    const popup = document.createElement('div');
+    popup.id = 'methodologyPopup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h3>Test Methodology</h3>
+            <p>${formatText(methodology)}</p>
+            <button onclick="this.parentElement.parentElement.remove()">Close</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
 }
 
 // Sort table by a given field (MitigationStrategy or ControlReference)

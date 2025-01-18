@@ -3,6 +3,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML1-AC-01",
     "Control": "Application control is implemented on workstations.",
+    "TestMethodology": "Check whether an in-built or third-party application control solution has been implemented for workstations.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -11,6 +12,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML1-AC-02",
     "Control": "Application control is applied to user profiles and temporary folders used by operating systems, web browsers and email clients.",
+    "TestMethodology": "If a path-based approach is used for application control, check that it covers user profiles and temporary folders used by operating systems, web browsers and email clients. Note, hash-based and publisher-based approaches are system-wide and automatically meet the intent of this control.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -19,6 +21,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML1-AC-03",
     "Control": "Application control restricts the execution of executables, software libraries, scripts, installers, compiled HTML, HTML applications and control panel applets to an organisation-approved set.",
+    "TestMethodology": "Compare the application control policy to the organisation's approved set of applications. Confirm the application control policy is functioning as expected by using ACVT.\nE8MVT can be used to perform limited (single folder) testing for file execution in user profiles and temporary directories.\nThe tester should attempt to execute a benign executable (EXE or COM) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute a benign software library (DLL or OCX) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute multiple benign script (PS, VBS, BAT or JS) files inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute a benign installer (MSI, MST or MSP) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute a benign compiled HTML (CHM) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute a benign HTML application (HTA) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.\nThe tester should attempt to execute a benign control panel applet (CPL) file inside of the user profile directory. The tester should be aware that subfolders within the user profile may have different behaviour depending on the configuration.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -27,6 +30,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML1-AH-01",
     "Control": "Internet Explorer 11 is disabled or removed.",
+    "TestMethodology": "E8MVT will perform a check of the group policy setting to disable Internet Explorer 11. In addition, check that the folder containing Internet Explorer 11 in Program Files and Program Files (x86) has been removed and that the iexplore.exe binary does not exist on the system.\nE8MVT will check for the existence of the iexplore.exe binary in Program Files locations.\nNote, even in Microsoft Windows 11, the iexplore.exe binary may still exist and various methods can be used to open Internet Explorer 11 as a standalone browser. To prevent this from occurring, either the iexplore.exe binary should be removed or an application control block rule implemented to block its execution.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -35,6 +39,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML1-AH-02",
     "Control": "Web browsers do not process Java from the internet.",
+    "TestMethodology": "Load a website in Microsoft Edge with known Java content and check if it renders in the web browser. Check the following registry keys.\nHKLM:\\SOFTWARE\\Oracle\\JavaDeploy\\WebDeployJava\nHKLM:\\SOFTWARE\\JavaSoft\\Java Plug-in\nAlternatively, the following PowerShell commands can be used.\nGet-ItemProperty -Path \"HKLM:\\SOFTWARE\\Oracle\\JavaDeploy\\WebDeployJava\"\nGet-ItemProperty -Path \"HKLM:\\SOFTWARE\\JavaSoft\\Java Plug-in\"\nLoad a website in Google Chrome with known Java content and check if it renders in the web browser.\nLoad a website in Mozilla Firefox with known Java content and check if it renders in the web browser.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -43,6 +48,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML1-AH-03",
     "Control": "Web browsers do not process web advertisements from the internet.",
+    "TestMethodology": "Load the Can You Block It? website in Microsoft Edge.\nLoad the Can You Block It? website in Google Chrome.\nLoad the Can You Block It? website in Mozilla Firefox.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -51,6 +57,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML1-AH-04",
     "Control": "Web browser security settings cannot be changed by users.",
+    "TestMethodology": "Check that group policy settings are configured for Microsoft Edge. Open the web browser configuration panel and look for existence of a ‘Managed by organisation’ message or similar. Attempt to change a security-related setting.\nCheck that group policy settings are configured for Google Chrome. Open the web browser configuration panel and look for existence of a ‘Managed by organisation’ message or similar. Attempt to change a security-related setting.\nCheck that group policy settings are configured for Mozilla Firefox. Open the web browser configuration panel and look for existence of a ‘Managed by organisation’ message or similar. Attempt to change a security-related setting.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -58,7 +65,8 @@
   {
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-01",
-    "Control": "Multi-factor authentication is used to authenticate users to their organisation’s online services that process, store or communicate their organisation’s sensitive data.",
+    "Control": "Multi-factor authentication is used to authenticate users to their organisation's online services that process, store or communicate their organisation's sensitive data.",
+    "TestMethodology": "Identify the organisation’s use of their own online services to process, store or communicate their sensitive data. Attempt to logon, or observe a user logon, to the online services. Verify that the user is presented with an MFA challenge.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -66,7 +74,8 @@
   {
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-02",
-    "Control": "Multi-factor authentication is used to authenticate users to third-party online services that process, store or communicate their organisation’s sensitive data.",
+    "Control": "Multi-factor authentication is used to authenticate users to third-party online services that process, store or communicate their organisation's sensitive data.",
+    "TestMethodology": "Identify the organisation’s use of third-party online services to process, store or communicate their sensitive data. Attempt to logon, or observe a user logon, to the online services. Verify that the user is presented with an MFA challenge.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -74,7 +83,8 @@
   {
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-03",
-    "Control": "Multi-factor authentication (where available) is used to authenticate users to third-party online services that process, store or communicate their organisation’s non-sensitive data.",
+    "Control": "Multi-factor authentication (where available) is used to authenticate users to third-party online services that process, store or communicate their organisation's non-sensitive data.",
+    "TestMethodology": "Identify the organisation’s use of third-party online services to process, store or communicate their non-sensitive data. Attempt to logon, or observe a user logon, to the online services. Verify that the user is presented with an MFA challenge. If not, confirm that the online service provider does not offer MFA functionality.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -82,7 +92,8 @@
   {
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-04",
-    "Control": "Multi-factor authentication is used to authenticate users to their organisation’s online customer services that process, store or communicate their organisation’s sensitive customer data.",
+    "Control": "Multi-factor authentication is used to authenticate users to their organisation's online customer services that process, store or communicate their organisation's sensitive customer data.",
+    "TestMethodology": "Identify the organisation’s use of their own online customer services to process, store or communicate their customers’ sensitive data. Attempt to logon, or observe a user logon, to the online customer services. Verify that the user is presented with an MFA challenge.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -90,7 +101,8 @@
   {
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-05",
-    "Control": "Multi-factor authentication is used to authenticate users to third-party online customer services that process, store or communicate their organisation’s sensitive customer data.",
+    "Control": "Multi-factor authentication is used to authenticate users to third-party online customer services that process, store or communicate their organisation's sensitive customer data.",
+    "TestMethodology": "Identify the organisation’s use of third-party online customer services to process, store or communicate their customers’ sensitive data. Attempt to logon, or observe a user logon, to the online customer services. Verify that the user is presented with an MFA challenge.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -99,6 +111,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-06",
     "Control": "Multi-factor authentication is used to authenticate customers to online customer services that process, store or communicate sensitive customer data.",
+    "TestMethodology": "Identify the organisation’s use of online customer services (both their own and third party) to process, store or communicate their customers’ sensitive data. Attempt to logon as a typical customer, or observe a customer logon, to the online customer services. Verify that the customer is presented with an MFA challenge.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -107,6 +120,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML1-MF-07",
     "Control": "Multi-factor authentication uses either: something users have and something users know, or something users have that is unlocked by something users know or are.",
+    "TestMethodology": "When observing users and customers performing MFA, determine whether it uses either of the below approaches:\nSomething users have (e.g. look-up secrets, out-of-band devices, single-factor OTP devices, single-factor cryptographic software or single-factor cryptographic devices) AND something users know (e.g. memorised secrets).\nOR\nSomething users have that is unlocked by something users know or are (e.g. multi-factor OTP devices, multi-factor cryptographic software and multi-factor cryptographic devices).",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -115,6 +129,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-01",
     "Control": "An automated method of asset discovery is used at least fortnightly to support the detection of assets for subsequent vulnerability scanning activities.",
+    "TestMethodology": "Review the method of automated asset discovery being used to identify assets such as workstations, servers and network devices.\nRequest evidence of previous vulnerability scans and review the date/time stamp and scope.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -123,6 +138,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-02",
     "Control": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities.",
+    "TestMethodology": "Request evidence of when the vulnerability database was last updated and compare to vulnerability scan history to determine whether updates occurred within 24 hours of vulnerability scans taking place.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -131,6 +147,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-03",
     "Control": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in online services.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the list of scanned online services match the list of online services that are known to be used.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -139,6 +156,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-04",
     "Control": "A vulnerability scanner is used at least weekly to identify missing patches or updates for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the list of scanned applications includes the list of applications that should have been scanned.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -147,6 +165,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-05",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in online services are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to identify online services within the environment and check that they have been patched against a critical vulnerability or known working exploit. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -155,6 +174,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-06",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in online services are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to identify online services within the environment and check that they have been patched against a non-critical vulnerability that has no known working exploits. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than two weeks.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -163,6 +183,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-07",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within two weeks of release.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment. Check the date applications were updated and compare to the dates patches were released. Check that the gap between is not greater than two weeks.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "FALSE"
@@ -171,6 +192,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-08",
     "Control": "Online services that are no longer supported by vendors are removed.",
+    "TestMethodology": "Use a vulnerability scanner to identify online services within the environment and check they are still vendor supported.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -179,6 +201,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML1-PA-09",
     "Control": "Office productivity suites, web browsers and their extensions, email clients, PDF software, Adobe Flash Player, and security products that are no longer supported by vendors are removed.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment and check they are still vendor supported.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -187,6 +210,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-01",
     "Control": "An automated method of asset discovery is used at least fortnightly to support the detection of assets for subsequent vulnerability scanning activities.",
+    "TestMethodology": "Review the method of automated asset discovery being used to identify assets such as workstations, servers and network devices.\nRequest evidence of previous vulnerability scans and review the date/time stamp and scope.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -195,6 +219,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-02",
     "Control": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities.",
+    "TestMethodology": "Request evidence of when the vulnerability database was last updated and compare to vulnerability scan history to determine whether updates occurred within 24 hours of vulnerability scans taking place.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -203,6 +228,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-03",
     "Control": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the list of scanned devices includes the list of devices that should have been scanned.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -211,6 +237,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-04",
     "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the list of scanned devices includes the list of devices that should have been scanned.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -219,6 +246,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-05",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether operating systems for internet-facing servers and internet-facing network devices have been patched against a critical vulnerability or known working exploit. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -227,6 +255,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-06",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing servers and internet-facing network devices are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether operating systems for internet-facing servers and internet-facing network devices have been patched against a non-critical vulnerability that has no known working exploits. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than two weeks.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -235,6 +264,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-07",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within one month of release.",
+    "TestMethodology": "Use a vulnerability scanner to check whether operating systems for workstations, non-internet-facing servers and non-internet-facing network devices have been patched against a vulnerability. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than one month.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "FALSE"
@@ -243,6 +273,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML1-PO-08",
     "Control": "Operating systems that are no longer supported by vendors are replaced.",
+    "TestMethodology": "Use a vulnerability scanner to identify operating systems within the environment and check they are still vendor supported.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -251,6 +282,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-01",
     "Control": "Requests for privileged access to systems, applications and data repositories are validated when first requested.",
+    "TestMethodology": "Confirm the organisation has documented, approved and enforced privileged access processes and procedures that outline the requirements for provisioning privileged accounts. Confirm the organisation has a list of systems, applications and data repositories that require privileged access.\nReview documented privileged access processes and procedures. Request forms, support tickets or emails provided by users requesting privileged access to systems, applications or data repositories along with approvals. This can be compared to screenshots of accounts with privileged access to determine if there are any discrepancies.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -259,6 +291,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-02",
     "Control": "Privileged users are assigned a dedicated privileged account to be used solely for duties requiring privileged access.",
+    "TestMethodology": "Discuss whether privileged users are assigned separate unprivileged and privileged accounts or whether they use a single privileged account for all their duties. Request a privileged user show you the accounts they use for privileged actions and unprivileged actions.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -267,7 +300,8 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-03",
     "Control": "Privileged accounts (excluding those explicitly authorised to access online services) are prevented from accessing the internet, email and web services.",
-    "ML1": "TRUE",
+    "TestMethodology": "While logged in as a privileged user, attempt to browse to an internet website. Review the configuration preventing internet access and attempt to change this as a privileged user not responsible for administering that system. Privileged accounts not responsible for administering these systems should not be able to change settings to access the internet.\nAttempt to open Microsoft Outlook on a system using the privileged account.\nRun the following PowerShell command to check if privileged accounts have access to mailboxes and email addresses:\nGet-ADUser -Filter {(admincount -eq 1) -and (emailaddress -like \"*\") -and (enabled -eq $true)} -Properties EmailAddress | Select samaccountname, emailaddress",
+    "ML1": "TRUE", 
     "ML2": "TRUE",
     "ML3": "TRUE"
   },
@@ -275,6 +309,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-04",
     "Control": "Privileged accounts explicitly authorised to access online services are strictly limited to only what is required for users and services to undertake their duties.",
+    "TestMethodology": "Confirm the organisation has a documented and approved list of privileged accounts that require access to online services. It should specify which account has access to which online service.\nDetermine whether these accounts are appropriately limited from accessing all other online services over the internet.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -283,6 +318,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-05",
     "Control": "Privileged users use separate privileged and unprivileged operating environments.",
+    "TestMethodology": "Attempt to access the administrative network environment using a standard account. Attempt to access the standard environment using a privileged account. Look for evidence of administrative access to unprivileged environments using tools such as BloodHound.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -291,6 +327,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-06",
     "Control": "Unprivileged accounts cannot logon to privileged operating environments.",
+    "TestMethodology": "Attempt to logon to a privileged operating environment using a standard account. Use BloodHound to analyse Active Directory data and any unprivileged accounts that have connected to privileged operating environments by looking for cached credentials.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -299,6 +336,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML1-RA-07",
     "Control": "Privileged accounts (excluding local administrator accounts) cannot logon to unprivileged operating environments.",
+    "TestMethodology": "Request a demonstration of a privileged account attempting to logon to a standard user workstation. Check group policy settings for ‘Deny logon locally’ and ‘Deny log on through Remote Desktop Services user rights’ to workstations for privileged accounts.\nWhile logged in as a standard user, attempt to use ‘runas’ to open an application as an administrator. Attempt other ways (e.g. WinRM, Computer Management or RDP) to escalate privileges to an administrator.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -307,6 +345,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-01",
     "Control": "Backups of data, applications and settings are performed and retained in accordance with business criticality and business continuity requirements.",
+    "TestMethodology": "Request the current business continuity plan (BCP). Note when the BCP was last modified as old BCPs often don’t reference the current environment. Confirm the organisation has a defined list of data, applications and settings.\nVerify data, applications and settings are backed up and retained in accordance with business criticality and business continuity requirements.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -315,6 +354,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-02",
     "Control": "Backups of data, applications and settings are synchronised to enable restoration to a common point in time.",
+    "TestMethodology": "Verify data, applications and settings are backed up in a synchronised manner using a common point in time.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -323,6 +363,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-03",
     "Control": "Backups of data, applications and settings are retained in a secure and resilient manner.",
+    "TestMethodology": "Verify data, applications and settings are backed up and retained in a secure and resilient manner.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -331,6 +372,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-04",
     "Control": "Restoration of data, applications and settings from backups to a common point in time is tested as part of disaster recovery exercises.",
+    "TestMethodology": "Verify the organisation has conducted a disaster recovery exercise. Verify the organisation has successfully restored data, applications and settings as part of this exercise. Confirm the existence of a disaster recovery plan (DRP) and ensure it is appropriate, relevant and followed during major cyber security incidents and exercises.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -339,6 +381,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-05",
     "Control": "Unprivileged accounts cannot access backups belonging to other accounts.",
+    "TestMethodology": "Verify access controls restrict access to backups to only the owner of the backup and privileged accounts.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -347,6 +390,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML1-RB-06",
     "Control": "Unprivileged accounts are prevented from modifying and deleting backups.",
+    "TestMethodology": "Verify access controls restrict the modification and deletion of backups to only privileged accounts.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -355,6 +399,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML1-RM-01",
     "Control": "Microsoft Office macros are disabled for users that do not have a demonstrated business requirement.",
+    "TestMethodology": "Run RSOP on workstations to identify the Microsoft Office macro security settings applied by group policy settings. This should typically be set to ‘Disable without notification’. Note ‘Disable with notification’ (the default setting) allows users to bypass this control and does not meet the intent. \nCheck for Active Directory security groups that enforce Microsoft Office macro blocking.\nTest running Microsoft Office macros on a user in the disallowed group. E8MVT will attempt to execute a Microsoft Office macro within a document.\nConfirm a list of approved users who can execute Microsoft Office macros is maintained and matches the technical implementation. Typically, this means the Active Directory Security Group that permits Microsoft Office macro use should match the list of users who have been approved to run Microsoft Office macros.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -363,6 +408,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML1-RM-02",
     "Control": "Microsoft Office macros in files originating from the internet are blocked.",
+    "TestMethodology": "Check if the following group policy setting is enabled. Do this for all installed Microsoft Office applications that can execute macros.\nUser Configuration/Policies/Administrative Templates/Microsoft <Application><Version>/Application Settings/Security/Trust Center/Block macros from running in Office files from the internet\nCheck if the following registry value exists and is set to 1. Do this for all installed Microsoft Office applications.\nComputer\\HKCU\\SOFTWARE\\Policies\\Microsoft\\office\\<version>\\<Application>\\security\\blockcontentexecutionfromInternet\nE8MVT will check that these registry settings are configured to the correct setting.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -371,6 +417,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML1-RM-03",
     "Control": "Microsoft Office macro antivirus scanning is enabled.",
+    "TestMethodology": "Check if the following group policy setting is enabled for all Microsoft Office applications.\nUser Configuration/Policies/Administrative Templates/Microsoft Office <Version>/Security Settings/Macro Runtime Scan Scope\nE8MVT will check the registry to confirm that the policy setting is configured.\nAttempt to run a pseudo malicious Microsoft Office macro that contains an EICAR test string. E8MVT will open a test file containing a Microsoft Office macro that will write the EICAR test string to a file.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -379,6 +426,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML1-RM-04",
     "Control": "Microsoft Office macro security settings cannot be changed by users.",
+    "TestMethodology": "Open Microsoft Office applications and attempt to change the Microsoft Office macro security settings in the Trust Center.",
     "ML1": "TRUE",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -387,6 +435,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-01",
     "Control": "Application control is implemented on internet-facing servers.",
+    "TestMethodology": "Check whether an in-built or third-party application control solution has been implemented for internet-facing servers.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -395,6 +444,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-02",
     "Control": "Application control is applied to all locations other than user profiles and temporary folders used by operating systems, web browsers and email clients.",
+    "TestMethodology": "If a path-based approach is used for application control, check that it covers all locations other than user profiles and temporary folders used by operating systems, web browsers and email clients. Note, hash-based and publisher-based approaches are system-wide and automatically meet the intent of this control.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -402,7 +452,8 @@
   {
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-03",
-    "Control": "Microsoft’s recommended application blocklist is implemented.",
+    "Control": "Microsoft's recommended application blocklist is implemented.",
+    "TestMethodology": "Attempt to run a binary that is on the recommended application blocklist such as mshta.exe, wmic.exe or wscript.exe.\nE8MVT will retrieve the latest version of the blocklist from Microsoft. It will compare each of the rules against those configured on the system and return a failed result if any do not match. This will not consider any rules that are determined to be necessary for business purposes and are risk managed.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -411,6 +462,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-04",
     "Control": "Application control rulesets are validated on an annual or more frequent basis.",
+    "TestMethodology": "Check that the organisation has a process for reviewing the list of allowed applications on an annual or more frequent basis.\nCheck that there is evidence that the organisation has enacted the annual application list review within the last 12 months.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -419,6 +471,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-05",
     "Control": "Allowed and blocked application control events are centrally logged.",
+    "TestMethodology": "Verify allowed and blocked application control event logs are centrally captured.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -427,6 +480,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-06",
     "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "TestMethodology": "Verify unauthorised users are unable to modify or delete event logs.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -435,6 +489,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-07",
     "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in an internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -443,6 +498,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-08",
     "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "TestMethodology": "Verify the organisation has identified a cyber security incident through the analysis of cyber security events. This evidence will typically exist as email correspondence.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -451,6 +507,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-09",
     "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting internally within the organisation. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as email correspondence or formal briefing material.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -459,6 +516,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-10",
     "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting to ASD. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as incident numbers provided by ASD for all reports submitted via ReportCyber.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -467,6 +525,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML2-AC-11",
     "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "TestMethodology": "Verify that the organisation has an up-to-date cyber security incident response plan. It should accurately represent processes and procedures following in response to the last cyber security incident experienced by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -475,6 +534,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-01",
     "Control": "Web browsers are hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "TestMethodology": "Use the Microsoft Policy Analyzer to validate the effective state of the system against the Microsoft Edge security baseline.\nDetermine if Google Chrome is configured via group policy settings and if the configured settings are in line with the Chrome Browser Enterprise Security Configuration Guide provided by Google at https://support.google.com/chrome/a/answer/9710898?hl=en.\nIn the absence of official Firefox hardening guidance from Mozilla, confirm what hardening has been performed by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -483,6 +543,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-02",
     "Control": "Microsoft Office is blocked from creating child processes.",
+    "TestMethodology": "Open a file that contains a Microsoft Office macro that will create a child process. Confirm it is unable to do this. Check the ASR rule 'd4f940ab-401b-4efc-aadc-ad5f3c50688a' is configured in block mode, or another solution is in place to prevent creation of child processes.\nRunning E8MVT will confirm if the ASR rule to prevent creation of child processes is enabled, or if child process creation has been blocked through a PowerShell command. Running E8MVT will execute the following test that opens a file containing a Microsoft Office macro that creates a child process.\n$ASR_Rules = Get-MPPreference | Select -ExpandProperty AttackSurfaceReductionRules_Ids \n$match = $false\nForeach($rules in $ASR_Rules) {If ($rules -match \"d4f940ab-401b-4efc-aadc-ad5f3c50688a\") {$match = $true}}\nIf($match -eq $true) {Write-Output(\"Block all Office applications from creating child processes (d4f940ab-401b-4efc-aadc-ad5f3c50688a) is enabled\")} else {Write-Output(\"Block all Office applications from creating child processes (d4f940ab-401b-4efc-aadc-ad5f3c50688a) is not present or disabled\")}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -491,6 +552,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-03",
     "Control": "Microsoft Office is blocked from creating executable content.",
+    "TestMethodology": "Open a file that contains a Microsoft Office macro that will create executable content. Confirm it is unable to do this. Check the ASR rule '3b576869-a4ec-4529-8536-b80a7769e899' is configured in block mode, or another solution is in place to prevent creation of executable content.\nRunning E8MVT will confirm if the ASR rule to creation of executable content is enabled. Running E8MVT will execute the following test that opens a file containing a Microsoft Office macro that creates executable content.\n$ASR_Rules = Get-MPPreference | Select -ExpandProperty AttackSurfaceReductionRules_Ids \n$match = $false\nForeach($rules in $ASR_Rules) {If ($rules -match \"3b576869-a4ec-4529-8536-b80a7769e899\") {$match = $true}}\nIf($match -eq $true) {Write-Output(\"Block Office applications from creating executable content (3b576869-a4ec-4529-8536-b80a7769e899) is enabled\")} else {Write-Output(\"Block Office applications from creating executable content (3b576869-a4ec-4529-8536-b80a7769e899) is not present or disabled\")}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -499,6 +561,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-04",
     "Control": "Microsoft Office is blocked from injecting code into other processes.",
+    "TestMethodology": "Open a file that contains a Microsoft Office macro that will inject code into another process. Confirm it is unable to do this. Check the ASR rule '75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84' is configured in block mode, or another solution is in place to prevent code injection.\nRunning E8MVT will confirm if the ASR rule to prevent injection of code into other processes is enabled. Running E8MVT will execute the following test that opens a file containing a Microsoft Office macro that will attempt to inject code into the explorer.exe process.\n$ASR_Rules = Get-MPPreference | Select -ExpandProperty AttackSurfaceReductionRules_Ids \n$match = $false\nForeach($rules in $ASR_Rules) {If ($rules -match \"75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84\") {$match = $true}}\nIf($match -eq $true) {Write-Output(\"Block Office applications from injecting code into other processes (75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84) is enabled\")} else {Write-Output(\"Block Office applications from injecting code into other processes (75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84) is not present or disabled\")}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -507,6 +570,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-05",
     "Control": "Microsoft Office is configured to prevent activation of Object Linking and Embedding packages.",
+    "TestMethodology": "Open a file that contains an OLE object. Check the PackagerPrompt registry key within the Trust Center settings is set to 2. E8MVT will check the required registry key.\nAlternatively, the following PowerShell command can be used.\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\office\\16.0\\<application>\\security\\\" | Select-Object -Property PackagerPrompt\nFor example: Get-ItemProperty -Path \"HKCU:\\SOFTWARE\\Microsoft\\office\\16.0\\excel\\security\\\" | Select-Object -Property PackagerPrompt",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -515,6 +579,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-06",
     "Control": "Office productivity suites are hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "TestMethodology": "Use the Microsoft Policy Analyzer to validate the effective state of the system against the Microsoft Office security baseline.\nFor other office productivity suites, determine if suitable vendor hardening guidance is available. Alternatively, confirm what hardening has been performed by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -523,6 +588,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-07",
     "Control": "Office productivity suite security settings cannot be changed by users.",
+    "TestMethodology": "Attempt to modify security settings in Microsoft Office applications. For example, check that the vbawarnings registry key is configured via policy and that a user is unable to change the Microsoft Office macro settings within the Trust Center options. E8MVT will check the required registry key.\nAlternatively, the following PowerShell command can be used.\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\office\\16.0\\<application>\\security\\\" | Select-Object -Property vbawarnings\nExample: Get-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\office\\16.0\\excel\\security\\\" | Select-Object -Property vbawarnings",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -531,6 +597,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-08",
     "Control": "PDF software is blocked from creating child processes.",
+    "TestMethodology": "Check the ASR rule '7674BA52-37EB-4A4F-A9A1-F0F9A1619A2C' is configured in block mode.\nAlternatively, Adobe Reader can be tested by opening the application, selecting Open from the File menu, selecting 'All Files (*.*)' from the dropdown menu in the corner, browsing to the system32 folder and selecting calc.exe to open.\nRunning E8MVT will confirm via the following test if the ASR rule to prevent creation of child processes is enabled.\n$ASR_Rules = Get-MPPreference | Select -ExpandProperty AttackSurfaceReductionRules_Ids \n$match = $false\nForeach($rules in $ASR_Rules) {If ($rules -match \"7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c\") {$match = $true}} \nIf($match -eq $true) {Write-Output(\"Block Adobe Reader from creating child processes (7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c) is enabled\")} else {Write-Output(\"Block Adobe Reader from creating child processes (7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c) is not present or disabled\")}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -539,6 +606,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-09",
     "Control": "PDF software is hardened using ASD and vendor hardening guidance, with the most restrictive guidance taking precedence when conflicts occur.",
+    "TestMethodology": "Determine the PDF software in use and if the vendor provides hardening guidance for that product. Follow the guidance to determine if the product has been hardened.\nAdobe Acrobat and Adobe Reader hardening guidance can be found at https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/index.html.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -547,6 +615,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-10",
     "Control": "PDF software security settings cannot be changed by users.",
+    "TestMethodology": "Attempt to modify security settings within allowed PDF readers. For example, by disabling sandbox protections in Adobe Reader.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -555,6 +624,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-11",
     "Control": "PowerShell module logging, script block logging and transcription events are centrally logged.",
+    "TestMethodology": "E8MVT is able to check the registry settings for this control.\nAlternatively, within the RSoP report, look for the Turn on Module Logging, Turn on PowerShell Script Block Logging and Turn on PowerShell Transcription settings at Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Windows PowerShell. They should all be enabled. In addition, module logging should ideally be configured to log all modules (i.e. '*'), although an organisation may tailor this setting.\nFinally, determine if these event logs are being centrally stored.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -563,6 +633,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-12",
     "Control": "Command line process creation events are centrally logged.",
+    "TestMethodology": "E8MVT is able to check the registry settings for this control.\nAlternatively, within the RSoP report, look for the Audit Process Creation setting at Computer Configuration\\Policies\\Windows Settings\\Security Settings\\Advanced Audit Policy Configuration\\Audit Policies\\Detailed Tracking\\. It should be enabled with a value of Success. In addition, look for the Include command line in process creation events setting at Computer Configuration\\Policies\\Administrative Templates\\System\\Audit Process Creation. It should be enabled.\nFinally, determine if these event logs are being centrally stored.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -571,6 +642,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-13",
     "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "TestMethodology": "Verify unauthorised users are unable to modify or delete event logs.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -579,6 +651,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-14",
     "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in an internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -587,6 +660,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-15",
     "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "TestMethodology": "Verify the organisation has identified a cyber security incident through the analysis of cyber security events. This evidence will typically exist as email correspondence.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -595,6 +669,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-16",
     "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting internally within the organisation. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as email correspondence or formal briefing material.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -603,6 +678,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-17",
     "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting to ASD. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as incident numbers provided by ASD for all reports submitted via ReportCyber.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -611,6 +687,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML2-AH-18",
     "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "TestMethodology": "Verify that the organisation has an up-to-date cyber security incident response plan. It should accurately represent processes and procedures following in response to the last cyber security incident experienced by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -619,6 +696,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-01",
     "Control": "Multi-factor authentication is used to authenticate privileged users of systems.",
+    "TestMethodology": "Verify a privileged user is presented with a MFA challenge when authenticating to their workstation or attempting to raise privileges.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -627,6 +705,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-02",
     "Control": "Multi-factor authentication is used to authenticate unprivileged users of systems.",
+    "TestMethodology": "Verify an unprivileged user is presented with a MFA challenge when authenticating to their workstation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -635,6 +714,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-03",
     "Control": "Multi-factor authentication used for authenticating users of online services is phishing-resistant.",
+    "TestMethodology": "Verify MFA for users of online services (including online customer services) uses either security keys, smart cards or passkeys.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -643,6 +723,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-04",
     "Control": "Multi-factor authentication used for authenticating customers of online customer services provides a phishing-resistant option.",
+    "TestMethodology": "Verify MFA for customers of online customer services offers the ability to use either security keys, smart cards or passkeys.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "FALSE"
@@ -651,6 +732,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-05",
     "Control": "Multi-factor authentication used for authenticating users of systems is phishing-resistant.",
+    "TestMethodology": "Verify MFA for users of systems uses either security keys, smart cards or Windows Hello for Business.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -659,6 +741,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-06",
     "Control": "Successful and unsuccessful multi-factor authentication events are centrally logged.",
+    "TestMethodology": "Verify the following event logs are centrally captured.\nSuccessful MFA events for the organisation’s online systems.\nSuccessful MFA events for administrative access.\nUnsuccessful MFA events for the organisation’s online systems.\nUnsuccessful MFA events for administrative access.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -667,6 +750,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-07",
     "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "TestMethodology": "Verify unauthorised users are unable to modify or delete event logs.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -675,6 +759,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-08",
     "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in an internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -683,6 +768,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-09",
     "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "TestMethodology": "Verify the organisation has identified a cyber security incident through the analysis of cyber security events. This evidence will typically exist as email correspondence.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -691,6 +777,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-10",
     "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting internally within the organisation. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as email correspondence or formal briefing material.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -699,6 +786,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-11",
     "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting to ASD. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as incident numbers provided by ASD for all reports submitted via ReportCyber.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -707,6 +795,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML2-MF-12",
     "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "TestMethodology": "Verify that the organisation has an up-to-date cyber security incident response plan. It should accurately represent processes and procedures following in response to the last cyber security incident experienced by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -715,6 +804,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML2-PA-01",
     "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, and security products.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the list of scanned applications includes the list of applications that should have been scanned.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -723,6 +813,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML2-PA-02",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within one month of release.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment. Check the date applications were updated and compare to the dates patches were released. Check that the gap between is not greater than one month.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -731,6 +822,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-01",
     "Control": "Privileged access to systems, applications and data repositories is disabled after 12 months unless revalidated.",
+    "TestMethodology": "Review documented process to disable privileged access after 12 months. Review evidence, such as support tickets, emails, logs or an automated disabling procedure to confirm accounts are disabled after 12 months unless revalidated.\nQuery Active Directory using PowerShell commands or tools such as ADRecon to identify accounts with no expiry dates or an expiration date greater than 12 months.\nThe following PowerShell command returns privileged accounts with no account expiry set:\nGet-ADUser -Filter {(admincount -eq 1) -and (enabled -eq $true)} -Properties AccountExpirationDate | Where-Object {$_.AccountExpirationDate -like \"\"} | Select @{n='Username'; e={$_.SamAccountName}}, @{n='Account Expiration Date'; e={$_.AccountExpirationDate}}, @{n='Enabled'; e={$_.Enabled}}\nThe following PowerShell command returns any privileged accounts that have an expiry date greater than 12 months:\nGet-ADUser -Filter {(admincount -eq 1) -and (enabled -eq $true)} -Properties AccountExpirationDate | Where-Object {$_.AccountExpirationDate -gt (Get-Date).AddMonths(12)} | Select @{n='Username'; e={$_.SamAccountName}}, @{n='Account Expiration Date'; e={$_.AccountExpirationDate}}, @{n='Enabled'; e={$_.Enabled}}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -739,6 +831,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-02",
     "Control": "Privileged access to systems and applications is disabled after 45 days of inactivity.",
+    "TestMethodology": "Review documented process to disable privileged access after 45 days of inactivity. Review evidence, such as support tickets, emails, logs or an automated disabling procedure to confirm privileged accounts are disabled after 45 days of inactivity.\nQuery Active Directory using PowerShell commands or tools such as ADRecon to identify privileged accounts with a ‘lastlogondate’ greater than 45 days.\nGet-ADUser -Filter {(admincount -eq 1) -and (enabled -eq $true)} -Properties LastLogonDate | Where-Object {$_.LastLogonDate -lt (Get-Date).AddDays(-45) -and$_.LastLogonDate -ne $null} | Select @{n='Username'; e={$_.samaccountname}}, @{n='Last Logon Date'; e={$_.LastLogonDate}}, @{n='Enabled'; e={$_.enabled}}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -747,6 +840,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-03",
     "Control": "Privileged operating environments are not virtualised within unprivileged operating environments.",
+    "TestMethodology": "Confirm with the organisation where the infrastructure for privileged operating environments is hosted. Look for privileged operating environment on unprivileged virtual hosts and typical user workstations.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -755,6 +849,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-04",
     "Control": "Administrative activities are conducted through jump servers.",
+    "TestMethodology": "Attempt to connect to servers or administrator-only systems from an unprivileged operating environment.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -763,6 +858,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-05",
     "Control": "Credentials for break glass accounts, local administrator accounts and service accounts are long, unique, unpredictable and managed.",
+    "TestMethodology": "Run the following PowerShell commands to retrieve the number of devices with LAPS and compare this with the number of devices in Active Directory.\nRun the following PowerShell command to get number of devices with LAPS.\nGet-ADComputer -Filter {ms-Mcs-AdmPwdExpirationTime -like '*'} -Properties ms-Mcs-AdmPwdExpirationTime | measure\nRun the following PowerShell command to get the number of enabled devices in Active Directory.\nGet-ADComputer -Filter {Enabled -eq $true} | measure\nObserve evidence of a password management or privileged access management solution in use for managing break glass and service account passwords. Ensure generated passwords are unique, unpredictable and meet a minimum length requirement (i.e. 30 characters). Look for accounts with identical passwords.\nConfirm how passwords are generated for local administrator accounts and how they are managed. If using LAPS for local administrator accounts, check the following group policy setting Computer Configuration/Administrative Templates/LAPS/Password Settings.\nQuery Active Directory using PowerShell commands or tools such as ADRecon to identify service accounts with passwords last set more than 12 months ago.\nRun the following PowerShell command to get service accounts with passwords older than 12 months. Replace SVC_* with service account naming convention.\n$PassLastSetTimeFrame = (Get-Date).AddMonths(-12)\nGet-ADUser -Filter 'enabled -eq \"true\" -and SamAccountName -like \"SVC_*\"' -Properties pwdlastset | Where-Object{$_.pwdlastset -like '0' -or ([datetime]::FromFileTime($_.pwdLastSet) -lt $PassLastSetTimeFrame)} | Select-Object SAMAccountName, @{name ='pwdLastSet'; expression={([datetime]::FromFileTime($_.pwdLastSet))}}",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -771,6 +867,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-06",
     "Control": "Privileged access events are centrally logged.",
+    "TestMethodology": "Verify the following event logs are centrally captured.\nEvent ID 4672 is created when an account with special privileges successfully logs in.\nEvent ID 4625 is created when a logon request fails.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -779,6 +876,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-07",
     "Control": "Privileged account and group management events are centrally logged.",
+    "TestMethodology": "Verify the following event logs are centrally captured.\nEvent ID 4738 is created when a user account is modified in Active Directory.\nEvent ID 4728 is created when a member is added to an Active Directory Security Group.\nEvent ID 4729 is created when a member is removed from an Active Directory Security Group.\nEvent ID 4737 is created when a change is made to an Active Directory Security Group.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -787,6 +885,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-08",
     "Control": "Event logs are protected from unauthorised modification and deletion.",
+    "TestMethodology": "Verify unauthorised users are unable to modify or delete event logs.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -795,6 +894,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-09",
     "Control": "Event logs from internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in an internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -803,6 +903,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-10",
     "Control": "Cyber security events are analysed in a timely manner to identify cyber security incidents.",
+    "TestMethodology": "Verify the organisation has identified a cyber security incident through the analysis of cyber security events. This evidence will typically exist as email correspondence.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -811,6 +912,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-11",
     "Control": "Cyber security incidents are reported to the Chief Information Security Officer, or one of their delegates, as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting internally within the organisation. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as email correspondence or formal briefing material.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -819,6 +921,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-12",
     "Control": "Cyber security incidents are reported to ASD as soon as possible after they occur or are discovered.",
+    "TestMethodology": "Verify that cyber security incidents are being reporting to ASD. Identify that such reporting is occurring within a reasonable timeframe. This evidence will typically exist as incident numbers provided by ASD for all reports submitted via ReportCyber.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -827,6 +930,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML2-RA-13",
     "Control": "Following the identification of a cyber security incident, the cyber security incident response plan is enacted.",
+    "TestMethodology": "Verify that the organisation has an up-to-date cyber security incident response plan. It should accurately represent processes and procedures following in response to the last cyber security incident experienced by the organisation.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -834,7 +938,8 @@
   {
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML2-RB-01",
-    "Control": "Privileged accounts (excluding backup administrator accounts) cannot access backups belonging to other accounts.",
+    "Control": "Privileged accounts (excluding backup administrator accounts) cannot access their own backups.",
+    "TestMethodology": "Verify access controls restrict the access of backups to the owner of the backup and backup administrator accounts.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -843,6 +948,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML2-RB-02",
     "Control": "Privileged accounts (excluding backup administrator accounts) are prevented from modifying and deleting backups.",
+    "TestMethodology": "Verify access controls restrict the modification and deletion of backups to backup administrator accounts.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -851,6 +957,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML2-RM-01",
     "Control": "Microsoft Office macros are blocked from making Win32 API calls.",
+    "TestMethodology": "Open a file that contains a Microsoft Office macro that makes a Win32 API call. Do this for all installed Microsoft Office applications. E8MVT can assist with this test.",
     "ML1": "",
     "ML2": "TRUE",
     "ML3": "TRUE"
@@ -859,6 +966,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML3-AC-01",
     "Control": "Application control is implemented on non-internet-facing servers.",
+    "TestMethodology": "Check whether an in-built or third-party application control solution has been implemented for non-internet-facing servers.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -867,6 +975,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML3-AC-02",
     "Control": "Application control restricts the execution of drivers to an organisation-approved set.",
+    "TestMethodology": "Determine the extent in which the organisation is approving the use of specific drivers in their environment. At a minimum, the organisation may make a risk-based decision to allow all drivers except for those on Microsoft's vulnerable driver blocklist.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -874,7 +983,8 @@
   {
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML3-AC-03",
-    "Control": "Microsoft’s vulnerable driver blocklist is implemented.",
+    "Control": "Microsoft's vulnerable driver blocklist is implemented.",
+    "TestMethodology": "Attempt to install a driver that is on the vulnerable driver blocklist. Verify rules for the blocked drivers exist in an application control configuration and that they are enforced. Alternatively, check whether memory integrity has been enabled via the Windows Security app as this will automatically enforce the vulnerable driver blocklist.\nE8MVT will retrieve the latest version of the vulnerable driver blocklist from Microsoft. It will compare each of the rules against those configured on the system and return a failed result if any do not match. This will not consider any rules that are determined to be necessary for business purposes and are risk managed.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -883,6 +993,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML3-AC-04",
     "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a non-internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -891,6 +1002,7 @@
     "MitigationStrategy": "Application Control",
     "ControlReference": "ML3-AC-05",
     "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a workstation trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -899,6 +1011,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML3-AH-01",
     "Control": ".NET Framework 3.5 (includes .NET 2.0 and 3.0) is disabled or removed.",
+    "TestMethodology": "Select the 'Turn Windows Features on or off' option from the Control Panel and confirm that .NET Framework (includes .NET 2.0 and 3.0) is not selected.\nCheck the registry keys below for the existence of older .NET Frameworks.\nE8MVT will check this location to determine if older .NET Framework versions exist on the system.\nGet-ChildItem -Path \"HKLM:\\SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\"\nGet-ChildItem -Path \"HKLM:\\Software\\Microsoft\\.NETFramework\\Policy\"",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -907,6 +1020,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML3-AH-02",
     "Control": "Windows PowerShell 2.0 is disabled or removed.",
+    "TestMethodology": "Select the 'Turn Windows Features on or off' option from the Control Panel and confirm that Windows PowerShell 2.0 is not selected.\nRun the following PowerShell command Get-ChildItem \"HKLM:\\SOFTWARE\\Microsoft\" -Recurse -Include PowerShellEngine and confirm that version 2.0 is not found in the results.\nThe PowerShell command $PSVersionTable will display a list of supported PowerShell versions. Ensure that 2.0 and below is not part of this list. The command $PSVersionTable.PSVersion.Major can be used to confirm the running version.\nE8MVT will check the described registry key to locate old PowerShell versions.\nGet-ChildItem \"HKLM:\\SOFTWARE\\Microsoft\\Powershell\" -Recurse -Include PowerShellEngine\nEnter powershell -Version 2 into a PowerShell prompt to check if the system can be downgraded.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -915,6 +1029,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML3-AH-03",
     "Control": "PowerShell is configured to use Constrained Language Mode.",
+    "TestMethodology": "Run $ExecutionContext.SessionState.LanguageMode in PowerShell to check if Constrained Language Mode is configured. If Constrained Language Mode is configured this should return ‘ConstrainedLanguage’.\nE8MVT will not run if the system is configured for Constrained Language Mode.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -923,6 +1038,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML3-AH-04",
     "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a non-internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -931,6 +1047,7 @@
     "MitigationStrategy": "Application Hardening",
     "ControlReference": "ML3-AH-05",
     "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a workstation trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -939,6 +1056,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML3-MF-01",
     "Control": "Multi-factor authentication is used to authenticate users of data repositories.",
+    "TestMethodology": "Verify both a privileged and unprivileged user is presented with a MFA challenge when authenticating to data repositories.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -947,6 +1065,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML3-MF-02",
     "Control": "Multi-factor authentication used for authenticating customers of online customer services is phishing-resistant.",
+    "TestMethodology": "Verify MFA for customers of online customer services uses either security keys, smart cards or passkeys.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -955,6 +1074,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML3-MF-03",
     "Control": "Multi-factor authentication used for authenticating users of data repositories is phishing-resistant.",
+    "TestMethodology": "Verify MFA for users of data repositories uses either security keys, smart cards or Windows Hello for Business.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -963,6 +1083,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML3-MF-04",
     "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a non-internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -971,6 +1092,7 @@
     "MitigationStrategy": "Multi-factor authentication",
     "ControlReference": "ML3-MF-05",
     "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a workstation trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -979,6 +1101,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML3-PA-01",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment and check that they have been patched against a critical vulnerability or known working exploit. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -987,6 +1110,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML3-PA-02",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in office productivity suites, web browsers and their extensions, email clients, PDF software, and security products are applied within two weeks of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment and check that they have been patched against a non-critical vulnerability that has no known working exploits. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than two weeks.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -995,6 +1119,7 @@
     "MitigationStrategy": "Patch Applications",
     "ControlReference": "ML3-PA-03",
     "Control": "Applications other than office productivity suites, web browsers and their extensions, email clients, PDF software, Adobe Flash Player, and security products that are no longer supported by vendors are removed.",
+    "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment and check they are still vendor supported.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1003,6 +1128,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-01",
     "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in drivers.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the vulnerability scan attempted to identify out-of-date drivers in operating systems.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1011,6 +1137,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-02",
     "Control": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in firmware.",
+    "TestMethodology": "Observe a vulnerability scan, or request evidence of previous vulnerability scans, and note the date/time stamp and scope. Check whether the vulnerability scan attempted to identify out-of-date firmware for devices.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1019,6 +1146,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-03",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether operating systems for workstations, non-internet-facing servers and non-internet-facing network devices have been patched against a critical vulnerability or known working exploit. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1027,6 +1155,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-04",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, non-internet-facing servers and non-internet-facing network devices are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether operating systems for workstations, non-internet-facing servers and non-internet-facing network devices have been patched against a non-critical vulnerability that has no known working exploits. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than one month.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1035,6 +1164,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-05",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in drivers are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether drivers for operating systems have been updated to mitigate a critical vulnerability or known working exploit. Determine the date the driver update was installed and compare to when the driver was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1043,6 +1173,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-06",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in drivers are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether drivers for operating systems have been updated to mitigate a non-critical vulnerability that has no known working exploits. Determine the date the driver update was installed and compare to when the driver was made available. Check that the gap between is not greater than one month.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1051,6 +1182,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-07",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in firmware are applied within 48 hours of release when vulnerabilities are assessed as critical by vendors or when working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether firmware for devices has been updated to mitigate a critical vulnerability or known working exploit. Determine the date the firmware update was installed and compare to when the firmware was made available. Check that the gap between is not greater than 48 hours.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1059,6 +1191,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-08",
     "Control": "Patches, updates or other vendor mitigations for vulnerabilities in firmware are applied within one month of release when vulnerabilities are assessed as non-critical by vendors and no working exploits exist.",
+    "TestMethodology": "Use a vulnerability scanner to check whether firmware for devices has been updated to mitigate a non-critical vulnerability that has no known working exploits. Determine the date the firmware update was installed and compare to when the firmware was made available. Check that the gap between is not greater than one month.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1067,6 +1200,7 @@
     "MitigationStrategy": "Patch Operating Systems",
     "ControlReference": "ML3-PO-09",
     "Control": "The latest release, or the previous release, of operating systems are used.",
+    "TestMethodology": "Query Active Directory using PowerShell commands or tools such as ADRecon or BloodHound to identify operating system versions within the environment.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1075,6 +1209,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-01",
     "Control": "Privileged access to systems, applications and data repositories is limited to only what is required for users and services to undertake their duties.",
+    "TestMethodology": "Review the privileged users of systems, applications and data repositories. Ensure their assigned privileges match their expected duties and role. Query Active Directory using PowerShell commands or tools such as BloodHound and ADRecon to identify users with more privileges than required in their role. Ensure privileged Active Directory groups such as Domain Administrators have limited membership.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1083,6 +1218,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-02",
     "Control": "Secure Admin Workstations are used in the performance of administrative activities.",
+    "TestMethodology": "Verify that the principles of Secure Admin Workstations are being applied to privileged operating environments. For example, by minimising the attack surface as much as possible by removing unnecessary functionality and hardening configurations through the use of ASD and vendor hardening guides.\nNote, this control doesn’t necessary require that dedicated physical devices be used exclusively for privileged operating environments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1091,6 +1227,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-03",
     "Control": "Just-in-time administration is used for administering systems and applications.",
+    "TestMethodology": "Query Active Directory using PowerShell commands or tools such as ADRecon to identify privileged users and groups. Consider some users may currently have just-in-time access and ensure they are not permanently members of a privileged group.\nReview evidence of valid use of this system, such as service requests or support tickets. Look for evidence of this solution being bypassed, such as users in privileged groups for extended periods of time. Ensure the system configuration meets the intent of this control, such as limiting who can receive privileged access.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1099,6 +1236,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-04",
     "Control": "Memory integrity functionality is enabled.",
+    "TestMethodology": "Check the registry setting at HKLM:\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity\\ and confirm that Enabled is set to 0 or 1.\nE8MVT is able to check the registry setting for this control.\nGet-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity\\\" | Select-Object -Property Enabled",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1107,6 +1245,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-05",
     "Control": "Local Security Authority protection functionality is enabled.",
+    "TestMethodology": "Check the registry setting at HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\ and confirm that RunAsPPL is set to 1 or 2.\nE8MVT is able to check the registry setting for this control.\nGet-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\\" | Select-Object -Property RunAsPPL",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1115,6 +1254,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-06",
     "Control": "Credential Guard functionality is enabled.",
+    "TestMethodology": "Check the registry setting at HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\ and confirm that LsaCfgFlags is set to 1 or 2.\nE8MVT is able to check the registry setting for this control.\nGet-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\\" | Select-Object -Property lsacfgflags",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1123,6 +1263,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-07",
     "Control": "Remote Credential Guard functionality is enabled.",
+    "TestMethodology": "Check the registry setting at HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\ and confirm that DisableRestrictedAdmin is set to 0.\nE8MVT is able to check the registry setting for this control.\nGet-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\LSA\\\" | Select-Object -Property DisabledRestrictedAdmin",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1131,6 +1272,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-08",
     "Control": "Event logs from non-internet-facing servers are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a non-internet-facing server trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1139,6 +1281,7 @@
     "MitigationStrategy": "Restrict administrative privileges",
     "ControlReference": "ML3-RA-09",
     "Control": "Event logs from workstations are analysed in a timely manner to detect cyber security events.",
+    "TestMethodology": "Verify the organisation has responded to a sign of compromise in a workstation trigged by monitoring activities. This evidence will typically exist as support tickets, email correspondence or threat and risk assessments.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1147,6 +1290,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML3-RB-01",
     "Control": "Unprivileged accounts cannot access their own backups.",
+    "TestMethodology": "Verify access controls restrict unprivileged users from accessing backups.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1155,6 +1299,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML3-RB-02",
     "Control": "Privileged accounts (excluding backup administrator accounts) cannot access their own backups.",
+    "TestMethodology": "Verify access controls restrict privileged users (excluding backup administrator accounts) from accessing backups.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1163,6 +1308,7 @@
     "MitigationStrategy": "Regular backups",
     "ControlReference": "ML3-RB-03",
     "Control": "Backup administrator accounts are prevented from modifying and deleting backups during their retention period.",
+    "TestMethodology": "Verify access controls restrict the modification and deletion of backups during their retention period to only break glass accounts.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1171,6 +1317,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-01",
     "Control": "Only Microsoft Office macros running from within a sandboxed environment, a Trusted Location or that are digitally signed by a trusted publisher are allowed to execute.",
+    "TestMethodology": "Attempt to execute Microsoft Office macros from untrusted locations (if configured).\nOR\nAttempt to execute signed and unsigned Microsoft Office macros from untrusted publishers (if configured).\nOR\nDetermine if a sandbox solution is in place and effective for Microsoft Office. Note, Application Guard for Office automatically blocks the execution of Microsoft Office macros rather than running them within a sandboxed environment.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1179,6 +1326,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-02",
     "Control": "Microsoft Office macros are checked to ensure they are free of malicious code before being digitally signed or placed within Trusted Locations.",
+    "TestMethodology": "If digital signatures or Trusted Locations are used by the organisation, verify that a process exists for checking that Microsoft Office macros are free of malicious code.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1187,6 +1335,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-03",
     "Control": "Only privileged users responsible for checking that Microsoft Office macros are free of malicious code can write to and modify content within Trusted Locations.",
+    "TestMethodology": "If Trusted Locations are used by the organisation, verify that a process exists for controlling write access to these locations.\nTrusted Locations for each Microsoft Office application can be obtained from the registry at HKCU:\\software\\microsoft\\office\\<version>\\<product>\\security\\trusted locations.\nThe following PowerShell command can be used to obtain a list of Trusted Locations.\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\policies\\microsoft\\office\\<version>\\<product>\\security\\trusted locations\"\nAs a standard user attempt to write a file to each of these locations.\nE8MVT will find configured Trusted Locations and attempt to write a file to each location",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1195,6 +1344,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-04",
     "Control": "Microsoft Office macros digitally signed by an untrusted publisher cannot be enabled via the Message Bar or Backstage View.",
+    "TestMethodology": "Attempt to execute Microsoft Office macros in a Microsoft Office file signed by an untrusted publisher.\nCheck the trustbar value is set to 1 at the following registry location.\nHKCU:\\Software\\Microsoft\\Office\\16.0\\Common\\TrustCenter\nCheck the following registry entry for each Microsoft Office application to confirm that the TCID19092 value has been set.\nHKCU\\SOFTWARE\\Policies\\Microsoft\\office\\<version>\\<product>\\disabledcmdbaritemslist\nThe following PowerShell commands can also be used.\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\office\\16.0\\Common\\TrustCenter\" | Select-Object -Property trustbar\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\office\\<version>\\<product>\" | Select-Object -Property disabledcmdbaritemslist\nFor example: Get-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\office\\16.0\\word\" | Select-Object -Property disabledcmdbaritemslist",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1203,6 +1353,7 @@
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-05",
     "Control": "Microsoft Office macros digitally signed by signatures other than V3 signatures cannot be enabled via the Message Bar or Backstage View.",
+    "TestMethodology": "If digital signatures are used by the organisation, verify that only V3 signatures are supported.\nThe following PowerShell command can be used to confirm this.\nGet-ItemProperty -Path \"HKCU:\\SOFTWARE\\Policies\\Microsoft\\VBA\\security\\\" | Select-Object -Property onlytrustvbasignaturev3",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
@@ -1210,7 +1361,8 @@
   {
     "MitigationStrategy": "Restrict Microsoft Office macros",
     "ControlReference": "ML3-RM-06",
-    "Control": "Microsoft Office’s list of trusted publishers is validated on an annual or more frequent basis.",
+    "Control": "Microsoft Office's list of trusted publishers is validated on an annual or more frequent basis.",
+    "TestMethodology": "If digital signatures are used by the organisation, verify that a process is in place to regularly review this list to allow/remove trusted publishers. Request evidence of an annual validation having taken place.\nIdeally, the organisation should re-sign all approved Microsoft Office macros obtained from external parties, after appropriate checks have taken place, and only list certificates they control within the trusted publishers list.",
     "ML1": "",
     "ML2": "",
     "ML3": "TRUE"
