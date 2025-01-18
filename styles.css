@@ -8,6 +8,7 @@
     --th-bg-color: #3a3a3c;
     --th-hover-bg-color: #5a5a5c;
     --th-text-color: #eaeaea;
+    --icon-invert: 1; /* White icons for dark mode */
 }
 
 /* Light mode theme */
@@ -20,6 +21,7 @@
     --th-bg-color: #007bff;
     --th-hover-bg-color: #0056b3;
     --th-text-color: white;
+    --icon-invert: 0.3; /* Darker icons for light mode */
 }
 
 body {
@@ -168,12 +170,21 @@ tr:hover {
     padding: 15px 30px;
     border-left: 4px solid var(--th-bg-color);
     margin: 0 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .methodology-content {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .methodology-content strong {
     color: var(--th-text-color);
     display: block;
     margin-bottom: 8px;
+}
+
+.light-mode .methodology-content strong {
+    color: var(--th-bg-color);
 }
 
 .methodology-content p {
@@ -183,4 +194,28 @@ tr:hover {
 
 tr.active {
     background-color: var(--table-hover-bg-color) !important;
+}
+
+.author-info {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+    filter: invert(var(--icon-invert));
+    transition: opacity 0.2s;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
 }
