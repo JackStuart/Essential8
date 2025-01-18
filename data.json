@@ -186,7 +186,7 @@
       "TestMethodology": "Use a vulnerability scanner to identify the listed applications within the environment. Check the date applications were updated and compare to the dates patches were released. Check that the gap between is not greater than two weeks.",
       "ML1": "TRUE",
       "ML2": "TRUE",
-      "ML3": "FALSE"
+      "ML3": ""
   },
   {
       "MitigationStrategy": "Patch Applications",
@@ -267,7 +267,7 @@
       "TestMethodology": "Use a vulnerability scanner to check whether operating systems for workstations, non-internet-facing servers and non-internet-facing network devices have been patched against a vulnerability. Determine the date the patch was installed and compare to when the patch was made available. Check that the gap between is not greater than one month.",
       "ML1": "TRUE",
       "ML2": "TRUE",
-      "ML3": "FALSE"
+      "ML3": ""
   },
   {
       "MitigationStrategy": "Patch Operating Systems",
@@ -726,7 +726,7 @@
       "TestMethodology": "Verify MFA for customers of online customer services offers the ability to use either security keys, smart cards or passkeys.",
       "ML1": "",
       "ML2": "TRUE",
-      "ML3": "FALSE"
+      "ML3": ""
   },
   {
       "MitigationStrategy": "Multi-factor authentication",
