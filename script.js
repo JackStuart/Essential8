@@ -10,6 +10,7 @@ fetch('data.json')
     .then(jsonData => {
         data = jsonData;
         populateMitigationStrategies();  // Populate checkboxes
+        applyURLParams();  // Apply URL parameters to checkboxes
         filterData();  // Display initial data on load
     })
     .catch(error => console.error('Error fetching JSON:', error));
@@ -28,6 +29,53 @@ function populateMitigationStrategies() {
     document.querySelectorAll('.filters-row input').forEach(checkbox => {
         checkbox.addEventListener('input', filterData);
     });
+}
+
+// Sync current checkbox state to URL query parameters
+function updateURL() {
+    const params = new URLSearchParams(window.location.search);
+
+    const selectedStrategies = Array.from(document.querySelectorAll('#strategyCheckboxes input:checked'))
+                                    .map(cb => cb.value);
+    if (selectedStrategies.length > 0) {
+        params.set('Strategy', selectedStrategies.join(','));
+    } else {
+        params.delete('Strategy');
+    }
+
+    const selectedLevels = [];
+    if (document.getElementById('ml1').checked) selectedLevels.push('1');
+    if (document.getElementById('ml2').checked) selectedLevels.push('2');
+    if (document.getElementById('ml3').checked) selectedLevels.push('3');
+    if (selectedLevels.length > 0) {
+        params.set('Level', selectedLevels.join(','));
+    } else {
+        params.delete('Level');
+    }
+
+    const qs = params.toString();
+    history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
+}
+
+// Apply URL query parameters to checkboxes on page load
+function applyURLParams() {
+    const params = new URLSearchParams(window.location.search);
+
+    const strategy = params.get('Strategy');
+    if (strategy) {
+        const strategies = strategy.split(',');
+        document.querySelectorAll('#strategyCheckboxes input').forEach(cb => {
+            if (strategies.includes(cb.value)) cb.checked = true;
+        });
+    }
+
+    const level = params.get('Level');
+    if (level) {
+        const levels = level.split(',');
+        if (levels.includes('1')) document.getElementById('ml1').checked = true;
+        if (levels.includes('2')) document.getElementById('ml2').checked = true;
+        if (levels.includes('3')) document.getElementById('ml3').checked = true;
+    }
 }
 
 // Filter data based on checkboxes (using OR logic for ML levels)
@@ -53,12 +101,16 @@ function filterData() {
     });
 
     displayData(filteredData);  // Update the table after filtering
+    updateURL();
 }
 
 // Display filtered data
 function displayData(filteredData) {
     const tbody = document.querySelector('#resultsTable tbody');
     tbody.innerHTML = ''; // Clear existing rows
+
+    const targetControl = new URLSearchParams(window.location.search).get('Control');
+    let scrolled = false;
 
     filteredData.forEach(item => {
         const mitigationStrategy = item.MitigationStrategy || 'N/A';
@@ -72,7 +124,7 @@ function displayData(filteredData) {
             <td>${item.ML2 || ''}</td>
             <td>${item.ML3 || ''}</td>
         `;
-        
+
         // Create methodology row (hidden by default)
         const methodologyRow = document.createElement('tr');
         methodologyRow.className = 'methodology-row hidden';
@@ -84,14 +136,34 @@ function displayData(filteredData) {
                 </div>
             </td>
         `;
-        
-        // Add click handler to the control cell
+
+        // Auto-expand the control referenced in the URL
+        if (targetControl && item.ControlReference === targetControl) {
+            methodologyRow.classList.remove('hidden');
+            row.classList.add('active');
+            if (!scrolled) {
+                scrolled = true;
+                setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150);
+            }
+        }
+
+        // Add click handler to the control cell — also updates URL
         const controlCell = row.querySelector('.control-column');
         controlCell.addEventListener('click', function() {
+            const expanding = methodologyRow.classList.contains('hidden');
             methodologyRow.classList.toggle('hidden');
             row.classList.toggle('active');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (expanding) {
+                urlParams.set('Control', item.ControlReference);
+            } else {
+                urlParams.delete('Control');
+            }
+            const qs = urlParams.toString();
+            history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
         });
-        
+
         tbody.appendChild(row);
         tbody.appendChild(methodologyRow);
     });
@@ -157,11 +229,12 @@ toggleButton.addEventListener('click', () => {
     }
 });
 
-// Reset all checkboxes
+// Reset all checkboxes and clear URL params
 const resetButton = document.getElementById('resetFilters');
 resetButton.addEventListener('click', () => {
     document.querySelectorAll('.filters-row input').forEach(checkbox => {
         checkbox.checked = false;
     });
+    history.replaceState(null, '', window.location.pathname);
     filterData(); // Refresh the filtered data after reset
 });
