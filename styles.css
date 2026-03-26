@@ -158,6 +158,7 @@ main {
     letter-spacing: 0.06em;
     color: var(--text-muted);
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .chip-group {
@@ -165,7 +166,7 @@ main {
     flex-wrap: wrap;
     gap: 6px;
     width: 100%;
-    text-align: left;
+    justify-content: center;
 }
 
 /* Hide real checkbox, style label as chip */
