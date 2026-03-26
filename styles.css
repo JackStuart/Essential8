@@ -74,7 +74,8 @@ header {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
     height: 56px;
 }
 
@@ -90,6 +91,8 @@ header h1 {
    Theme toggle button
    ============================================================ */
 .theme-toggle {
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +105,6 @@ header h1 {
     cursor: pointer;
     transition: background var(--transition), border-color var(--transition), color var(--transition);
     padding: 0;
-    flex-shrink: 0;
 }
 
 .theme-toggle:hover {
