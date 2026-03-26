@@ -1,221 +1,739 @@
-/* Default dark theme (dark mode as default) */
+/* ============================================================
+   Design tokens
+   ============================================================ */
 :root {
-    --bg-color: #1c1c1e;
-    --text-color: #eaeaea;
-    --table-bg-color: #2c2c2e;
-    --table-border-color: #444;
-    --table-hover-bg-color: #3a3a3c;
-    --th-bg-color: #3a3a3c;
-    --th-hover-bg-color: #5a5a5c;
-    --th-text-color: #eaeaea;
-    --icon-invert: 1; /* White icons for dark mode */
+    /* Dark mode (default) */
+    --bg:            #0d1117;
+    --surface:       #161b22;
+    --surface-raised:#21262d;
+    --border:        #30363d;
+    --text:          #e6edf3;
+    --text-muted:    #8b949e;
+    --accent:        #388bfd;
+    --accent-hover:  #58a6ff;
+    --accent-fg:     #ffffff;
+    --danger:        #f85149;
+    --success:       #3fb950;
+    --shadow:        0 1px 3px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-sm:     0 1px 2px rgba(0,0,0,0.3);
+    --radius:        8px;
+    --radius-sm:     6px;
+    --radius-pill:   999px;
+    --icon-invert:   1;
+    --transition:    0.15s ease;
 }
 
-/* Light mode theme */
 .light-mode {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --table-bg-color: white;
-    --table-border-color: #ddd;
-    --table-hover-bg-color: #f1f1f1;
-    --th-bg-color: #007bff;
-    --th-hover-bg-color: #0056b3;
-    --th-text-color: white;
-    --icon-invert: 0.3; /* Darker icons for light mode */
+    --bg:            #f6f8fa;
+    --surface:       #ffffff;
+    --surface-raised:#f6f8fa;
+    --border:        #d0d7de;
+    --text:          #1f2328;
+    --text-muted:    #656d76;
+    --accent:        #0969da;
+    --accent-hover:  #0550ae;
+    --accent-fg:     #ffffff;
+    --shadow:        0 1px 3px rgba(31,35,40,0.1), 0 4px 12px rgba(31,35,40,0.07);
+    --shadow-sm:     0 1px 2px rgba(31,35,40,0.08);
+    --icon-invert:   0;
+}
+
+/* ============================================================
+   Reset & base
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-    text-align: center;
+/* ============================================================
+   Header
+   ============================================================ */
+header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
 }
 
-.filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.filters-row {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.filters label {
-    margin-right: 15px;
-    font-size: 16px;
-}
-
-.dark-mode-toggle {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.dark-mode-toggle button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: var(--th-bg-color);
-    color: var(--th-text-color);
-    border: none;
-    border-radius: 4px;
-}
-
-/* Ensure the table cells adjust to fit content */
-table {
-    width: 90%;
+.header-content {
+    max-width: 1280px;
     margin: 0 auto;
-    border-collapse: collapse;
-    background-color: var(--table-bg-color);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
 }
 
-th, td {
-    padding: 12px;
-    border: 1px solid var(--table-border-color);
+header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+}
+
+/* ============================================================
+   Theme toggle button
+   ============================================================ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-raised);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--surface-raised);
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.theme-toggle svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* In dark mode show sun (switch to light); in light mode show moon (switch to dark) */
+body:not(.light-mode) .icon-moon { display: none; }
+body.light-mode .icon-sun        { display: none; }
+
+/* ============================================================
+   Main content area
+   ============================================================ */
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 24px 0;
+}
+
+/* ============================================================
+   Filter section
+   ============================================================ */
+.filters {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-section {
+    margin-bottom: 12px;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+.filter-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
     text-align: left;
-    white-space: nowrap; /* Prevent wrapping by default */
 }
 
-/* Allow wrapping only for the "Control" column */
-td.control-column {
-    white-space: normal; /* Enable wrapping for this column */
-    word-wrap: break-word; /* Ensure long words break properly */
+/* Hide real checkbox, style label as chip */
+.chip-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface-raised);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+    user-select: none;
+    margin: 0;
+}
+
+.chip-group label:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.chip-group label:has(input:checked) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-fg);
+}
+
+.chip-group label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Reset button row */
+.filter-actions {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+#resetFilters {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+#resetFilters:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+}
+
+/* ============================================================
+   Table wrapper
+   ============================================================ */
+.table-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+/* ============================================================
+   Table header
+   ============================================================ */
+thead {
+    /* sticky thead requires a non-overflow scroll ancestor;
+       skipped here since table-container uses overflow-x: auto */
 }
 
 th {
-    background-color: var(--th-bg-color);
-    color: var(--th-text-color);
+    background-color: var(--surface-raised);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+th.sortable {
     cursor: pointer;
 }
 
 th.sortable:hover {
-    background-color: var(--th-hover-bg-color);
+    color: var(--text);
+    background-color: var(--surface-raised);
 }
 
-tr:nth-child(even) {
-    background-color: var(--table-hover-bg-color);
+th.sortable::after {
+    content: ' ↕';
+    font-size: 10px;
+    opacity: 0.4;
 }
 
-tr:hover {
-    background-color: var(--table-hover-bg-color);
+/* Column widths */
+th:nth-child(1) { width: 18%; }   /* Mitigation Strategy */
+th:nth-child(2) { width: 12%; }   /* Control Reference */
+th:nth-child(3) { width: 52%; }   /* Control */
+th:nth-child(4),
+th:nth-child(5),
+th:nth-child(6) { width: 6%; text-align: center; } /* ML1/2/3 */
+
+/* ============================================================
+   Table body
+   ============================================================ */
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
 }
 
-.control-column {
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* TRUE badge */
+td:nth-child(4):not(:empty),
+td:nth-child(5):not(:empty),
+td:nth-child(6):not(:empty) {
+    color: var(--success);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background-color: var(--surface-raised);
+}
+
+tbody tr.active td {
+    background-color: var(--surface-raised);
+}
+
+/* Control column */
+td.control-column {
     cursor: pointer;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.5;
 }
 
-.control-column:hover {
-    text-decoration: underline;
+td.control-column:hover {
+    color: var(--accent);
 }
 
-#methodologyPopup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background-color: var(--table-bg-color);
-    color: var(--text-color);
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 80%;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.popup-content h3 {
-    margin-top: 0;
-}
-
-.popup-content button {
-    margin-top: 15px;
-    padding: 8px 16px;
-    background-color: var(--th-bg-color);
-    color: var(--th-text-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.popup-content button:hover {
-    background-color: var(--th-hover-bg-color);
-}
-
+/* ============================================================
+   Methodology expand row
+   ============================================================ */
 .methodology-row {
-    background-color: var(--table-bg-color) !important;
+    background-color: var(--surface) !important;
 }
 
 .methodology-row.hidden {
     display: none;
 }
 
-.methodology-content {
-    padding: 15px 30px;
-    border-left: 4px solid var(--th-bg-color);
-    margin: 0 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+.methodology-row td {
+    padding: 0;
+    border-bottom: 1px solid var(--border);
 }
 
-.light-mode .methodology-content {
-    background-color: rgba(0, 0, 0, 0.05);
+.methodology-content {
+    padding: 14px 20px 14px 36px;
+    border-left: 3px solid var(--accent);
+    margin: 8px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background-color: var(--surface-raised);
 }
 
 .methodology-content strong {
-    color: var(--th-text-color);
     display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
     margin-bottom: 8px;
-}
-
-.light-mode .methodology-content strong {
-    color: var(--th-bg-color);
 }
 
 .methodology-content p {
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.6;
+    color: var(--text);
+    font-size: 13px;
 }
 
-tr.active {
-    background-color: var(--table-hover-bg-color) !important;
+/* ============================================================
+   Popup (methodology modal — legacy)
+   ============================================================ */
+#methodologyPopup {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
 }
 
-.author-info {
+.popup-content {
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 24px;
+    border-radius: var(--radius);
+    max-width: 640px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.popup-content h3 {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.popup-content button {
+    margin-top: 16px;
+    padding: 6px 16px;
+    background-color: var(--accent);
+    color: var(--accent-fg);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background var(--transition);
+}
+
+.popup-content button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer.author-info {
     text-align: center;
-    margin: 20px 0;
-    font-size: 0.9em;
+    padding: 20px 24px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+}
+
+footer.author-info p {
+    margin: 0 0 8px;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-top: 4px;
 }
 
 .social-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     filter: invert(var(--icon-invert));
-    transition: opacity 0.2s;
+    opacity: 0.5;
+    transition: opacity var(--transition);
+    display: block;
 }
 
 .social-icon:hover {
-    opacity: 0.7;
+    opacity: 1;
+}
+
+/* ============================================================
+   Focus styles (accessibility)
+   ============================================================ */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Filter toggle button (mobile only — hidden on desktop)
+   ============================================================ */
+.filter-toggle {
+    display: none;
+}
+
+/* ============================================================
+   Responsive — tablet
+   ============================================================ */
+@media (max-width: 768px) {
+    header {
+        padding: 0 16px;
+    }
+
+    main {
+        padding: 16px 12px 0;
+    }
+
+    .filters {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* Toggle button visible on mobile */
+    .filter-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 14px 16px;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .filter-toggle-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .filter-toggle-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        border-radius: var(--radius-pill);
+        background: var(--accent);
+        color: var(--accent-fg);
+        font-size: 11px;
+        font-weight: 700;
+        /* hidden when count is 0 */
+    }
+
+    .filter-toggle-count:empty,
+    .filter-toggle-count[data-count="0"] {
+        display: none;
+    }
+
+    .filter-chevron {
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted);
+        transition: transform var(--transition);
+        flex-shrink: 0;
+    }
+
+    .filters.open .filter-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Collapsible body */
+    .filter-body {
+        display: none;
+        padding: 0 16px 14px;
+        border-top: 1px solid var(--border);
+    }
+
+    .filters.open .filter-body {
+        display: block;
+    }
+
+    .filter-body .filter-section {
+        margin-top: 12px;
+    }
+
+    .filter-actions {
+        margin-top: 12px;
+    }
+}
+
+/* ============================================================
+   Responsive — mobile card layout
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Remove side borders on table container so cards go edge-to-edge */
+    .table-container {
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        margin-left: -12px;
+        margin-right: -12px;
+        overflow-x: hidden;
+    }
+
+    /* Override desktop min-width so card layout isn't constrained */
+    #resultsTable {
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Hide column headers */
+    #resultsTable thead {
+        display: none;
+    }
+
+    /* Each data row becomes a card */
+    #resultsTable tbody tr:not(.methodology-row) {
+        display: block;
+        position: relative;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    #resultsTable tbody tr:not(.methodology-row):last-of-type {
+        border-bottom: none;
+    }
+
+    /* All cells become blocks, no borders */
+    #resultsTable tbody tr:not(.methodology-row) td {
+        display: block;
+        border: none;
+        padding: 0;
+        text-align: left;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* Strategy badge via ::before on the row */
+    #resultsTable tbody tr:not(.methodology-row)::before {
+        content: attr(data-strategy);
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 9px;
+        border-radius: var(--radius-pill);
+        background: var(--surface-raised);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        margin-bottom: 8px;
+        letter-spacing: 0.02em;
+    }
+
+    /* Hide strategy column td (shown as badge above) */
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(1) {
+        display: none;
+    }
+
+    /* Control Reference — small monospace label */
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(2) {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    /* Control text — main readable content */
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(3) {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--text);
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(3):hover {
+        color: var(--accent);
+    }
+
+    /* ML level badges — inline row at the bottom */
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(4),
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(5),
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(6) {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 6px;
+        padding: 2px 9px;
+        border-radius: var(--radius-pill);
+        background: rgba(63, 185, 80, 0.12);
+        border: 1px solid rgba(63, 185, 80, 0.3);
+        color: transparent; /* hide "TRUE" text */
+        font-size: 0;
+    }
+
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(4)::before,
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(5)::before,
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(6)::before {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--success);
+        letter-spacing: 0.03em;
+    }
+
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(4)::before { content: "ML1"; }
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(5)::before { content: "ML2"; }
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(6)::before { content: "ML3"; }
+
+    /* Hide empty ML cells (no badge when not applicable) */
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(4):empty,
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(5):empty,
+    #resultsTable tbody tr:not(.methodology-row) td:nth-child(6):empty {
+        display: none;
+    }
+
+    /* Methodology expand row — full-width block (only when not hidden) */
+    #resultsTable tbody .methodology-row:not(.hidden) {
+        display: block;
+    }
+
+    #resultsTable tbody .methodology-row td {
+        display: block;
+        border: none;
+        padding: 0;
+    }
+
+    .methodology-content {
+        margin: 4px 12px 8px;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 15px;
+    }
+
+    .chip-group label {
+        font-size: 12px;
+        padding: 3px 10px;
+    }
 }

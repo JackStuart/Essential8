@@ -26,7 +26,7 @@ function populateMitigationStrategies() {
     });
 
     // Add event listeners to all checkboxes for dynamic filtering
-    document.querySelectorAll('.filters-row input').forEach(checkbox => {
+    document.querySelectorAll('.chip-group input').forEach(checkbox => {
         checkbox.addEventListener('input', filterData);
     });
 }
@@ -102,6 +102,7 @@ function filterData() {
 
     displayData(filteredData);  // Update the table after filtering
     updateURL();
+    updateFilterCount();
 }
 
 // Display filtered data
@@ -116,6 +117,7 @@ function displayData(filteredData) {
         const mitigationStrategy = item.MitigationStrategy || 'N/A';
         // Create main row
         const row = document.createElement('tr');
+        row.setAttribute('data-strategy', mitigationStrategy);
         row.innerHTML = `
             <td>${mitigationStrategy}</td>
             <td>${item.ControlReference || 'N/A'}</td>
@@ -174,26 +176,6 @@ function formatText(text) {
     return text.replace(/\n/g, '<br>');
 }
 
-// Add this new function to handle showing the methodology
-function showMethodology(methodology) {
-    // Remove any existing methodology popup
-    const existingPopup = document.getElementById('methodologyPopup');
-    if (existingPopup) {
-        existingPopup.remove();
-    }
-
-    // Create and show the popup
-    const popup = document.createElement('div');
-    popup.id = 'methodologyPopup';
-    popup.innerHTML = `
-        <div class="popup-content">
-            <h3>Test Methodology</h3>
-            <p>${formatText(methodology)}</p>
-            <button onclick="this.parentElement.parentElement.remove()">Close</button>
-        </div>
-    `;
-    document.body.appendChild(popup);
-}
 
 // Sort table by a given field (MitigationStrategy or ControlReference)
 function sortTable(field) {
@@ -222,19 +204,32 @@ function sortTable(field) {
 const toggleButton = document.getElementById('toggleDarkMode');
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
-    if (document.body.classList.contains('light-mode')) {
-        toggleButton.textContent = 'Toggle Dark Mode';
-    } else {
-        toggleButton.textContent = 'Toggle Light Mode';
-    }
 });
 
 // Reset all checkboxes and clear URL params
 const resetButton = document.getElementById('resetFilters');
 resetButton.addEventListener('click', () => {
-    document.querySelectorAll('.filters-row input').forEach(checkbox => {
+    document.querySelectorAll('.chip-group input').forEach(checkbox => {
         checkbox.checked = false;
     });
     history.replaceState(null, '', window.location.pathname);
     filterData(); // Refresh the filtered data after reset
 });
+
+// Mobile: collapsible filter panel
+const filterToggle = document.getElementById('filterToggle');
+if (filterToggle) {
+    filterToggle.addEventListener('click', () => {
+        const section = filterToggle.closest('.filters');
+        const isOpen = section.classList.toggle('open');
+        filterToggle.setAttribute('aria-expanded', isOpen);
+    });
+}
+
+// Update the active filter count badge on the toggle button
+function updateFilterCount() {
+    const countEl = document.getElementById('filterCount');
+    if (!countEl) return;
+    const active = document.querySelectorAll('.chip-group input:checked').length;
+    countEl.textContent = active > 0 ? active : '';
+}

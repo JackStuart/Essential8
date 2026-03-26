@@ -3,65 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive reference for the ACSC Essential Eight cybersecurity mitigation strategies, with maturity level filtering and test methodology details.">
     <title>ACSC Essential 8</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-mode"> <!-- Default to dark mode -->
+<body>
 
-<h1>ACSC Essential 8</h1>
-
-<div class="dark-mode-toggle">
-    <button id="toggleDarkMode">Toggle Light Mode</button> <!-- Updated to toggle between modes -->
-</div>
-
-<div class="filters">
-    <!-- Mitigation Strategy Checkboxes -->
-    <div class="filters-row" id="strategyCheckboxes">
-        <!-- Strategy checkboxes will be dynamically added here -->
+<header>
+    <div class="header-content">
+        <h1>ACSC Essential 8</h1>
+        <button id="toggleDarkMode" class="theme-toggle" aria-label="Toggle theme">
+            <!-- Sun icon: shown in dark mode (click to go light) -->
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+            <!-- Moon icon: shown in light mode (click to go dark) -->
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
     </div>
+</header>
 
-    <!-- ML Level Checkboxes -->
-    <div class="filters-row">
-        <label><input type="checkbox" id="ml1" /> ML1</label>
-        <label><input type="checkbox" id="ml2" /> ML2</label>
-        <label><input type="checkbox" id="ml3" /> ML3</label>
+<main>
+    <section class="filters" aria-label="Filter controls">
+        <!-- Toggle button: visible on mobile only -->
+        <button class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterBody">
+            <span class="filter-toggle-label">
+                Filters
+                <span class="filter-toggle-count" id="filterCount"></span>
+            </span>
+            <svg class="filter-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </button>
+
+        <div class="filter-body" id="filterBody">
+            <div class="filter-section">
+                <span class="filter-label">Mitigation Strategy</span>
+                <div class="chip-group" id="strategyCheckboxes">
+                    <!-- Strategy chips dynamically inserted by script.js -->
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <span class="filter-label">Maturity Level</span>
+                <div class="chip-group">
+                    <label><input type="checkbox" id="ml1" /> ML1</label>
+                    <label><input type="checkbox" id="ml2" /> ML2</label>
+                    <label><input type="checkbox" id="ml3" /> ML3</label>
+                </div>
+            </div>
+
+            <div class="filter-actions">
+                <button id="resetFilters">Reset Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="table-container">
+        <table id="resultsTable" aria-label="Essential 8 controls">
+            <thead>
+                <tr>
+                    <th class="sortable" onclick="sortTable('MitigationStrategy')">Mitigation Strategy</th>
+                    <th class="sortable" onclick="sortTable('ControlReference')">Control Reference</th>
+                    <th>Control</th>
+                    <th>ML1</th>
+                    <th>ML2</th>
+                    <th>ML3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filtered data inserted by script.js -->
+            </tbody>
+        </table>
     </div>
+</main>
 
-    <!-- Reset Button -->
-    <div class="filters-row">
-        <button id="resetFilters">Reset Filters</button>
-    </div>
-</div>
-
-<table id="resultsTable">
-    <thead>
-        <tr>
-            <th class="sortable" onclick="sortTable('MitigationStrategy')">Mitigation Strategy</th>
-            <th class="sortable" onclick="sortTable('ControlReference')">Control Reference</th>
-            <th>Control</th>
-            <th>ML1</th>
-            <th>ML2</th>
-            <th>ML3</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Filtered data will be inserted here -->
-    </tbody>
-</table>
-
-<div class="author-info">
+<footer class="author-info">
     <p>Created by Jack Stuart</p>
     <div class="social-links">
-        <a href="https://www.linkedin.com/in/jackstuart1/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/jackstuart1/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
         </a>
-        <a href="https://github.com/JackStuart" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/JackStuart" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="social-icon">
         </a>
     </div>
-</div>
+</footer>
 
 <script src="script.js"></script>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d09ef0e4ed554352b297b0e71f7e7de4"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d09ef0e4ed554352b297b0e71f7e7de4"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
